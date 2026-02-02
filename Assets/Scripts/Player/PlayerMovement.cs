@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float airMultiplier;
     bool canJump = true;
 
+    [Header("SlopeMovement")]
+    [SerializeField] float maxSlopeAngle;
+    [SerializeField] private RaycastHit slopeHit;
+    private bool exitingSlope;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,8 +66,14 @@ public class PlayerMovement : MonoBehaviour
         // Calculate movememnt direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        // On slope
+        if (OnSlope())
+        {
+            rb.AddForce(GetSlopeMoveDirection() * playerSpeed * 10f, ForceMode.Force);
+        }
+
         // On the ground
-        if (isGrounded)
+        else if (isGrounded)
         {
             rb.AddForce(moveDirection.normalized * playerSpeed * 10, ForceMode.Force);
         }
@@ -70,6 +82,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * playerSpeed * 10 * airMultiplier, ForceMode.Force);
         }
+
+        //Turn off gravity so we dont slide down
+        rb.useGravity = !OnSlope();
         
     }
 
@@ -94,16 +109,29 @@ public class PlayerMovement : MonoBehaviour
     // Limit velocity if needed
     private void speedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (flatVel.magnitude > playerSpeed)
+        if (OnSlope())
         {
-            Vector3 cappedVel = flatVel.normalized * playerSpeed;
-            rb.velocity = new Vector3(cappedVel.x, rb.velocity.y, cappedVel.z);
+            if (rb.velocity.magnitude > playerSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * playerSpeed;
+            }
         }
+
+        else
+        {
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            if (flatVel.magnitude > playerSpeed)
+            {
+                Vector3 cappedVel = flatVel.normalized * playerSpeed;
+                rb.velocity = new Vector3(cappedVel.x, rb.velocity.y, cappedVel.z);
+            }
+        }
+
     }
 
     private void Jump()
     {
+        exitingSlope = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
@@ -111,5 +139,26 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
+        exitingSlope = false;
+    }
+
+    //Slope movement
+    private bool OnSlope()
+    {
+        if (exitingSlope)
+        {
+            return false;
+        }
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f, groundLayer))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
     }
 }
