@@ -21,11 +21,11 @@ public class GenericInteract : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteract player)
     {
-        Debug.Log(this.name + " just go picked up by: " + player.name);
+        Debug.Log(this.name + " just got picked up by: " + player.name);
         player.PickUp(gameObject);
     }
 
-    // MAKES IT NOT DRIFT AWAY
+    // MAKES IT NOT DRIFT AWAY WHEN PICKED UP
     void LateUpdate()
     {
         if (transform.parent != null)

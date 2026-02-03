@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Highlight : MonoBehaviour
 {
-    public Renderer rend;
+    private Renderer[] renderers;
     public MaterialPropertyBlock mpb;
     private static readonly int HighlightID = Shader.PropertyToID("_Highlight");
 
@@ -22,21 +22,28 @@ public class Highlight : MonoBehaviour
 
     private void Awake()
     {
-        rend = GetComponent<Renderer>();
+        renderers = GetComponentsInChildren<Renderer>(true);
         mpb = new MaterialPropertyBlock();
     }
 
     public void ToggleHighlight(bool val)
     {
-        rend.GetPropertyBlock(mpb);
-        if (val)
+        float glow;
+        if (val == true)
         {
-            mpb.SetFloat(HighlightID, 1f);
+            glow = 1f;
         }
         else
         {
-            mpb.SetFloat(HighlightID, 0f);
+            glow = 0f;
         }
-        rend.SetPropertyBlock(mpb);
+
+
+        foreach (Renderer rend in renderers)
+        {
+            rend.GetPropertyBlock(mpb);
+            mpb.SetFloat(HighlightID, glow);
+            rend.SetPropertyBlock(mpb);
+        }
     }
 }
