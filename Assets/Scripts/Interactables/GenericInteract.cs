@@ -13,10 +13,10 @@ public class GenericInteract : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent != null)
-        {
-            Debug.Log(transform.localPosition);
-        }
+        //if (transform.parent != null)
+        //{
+        //    Debug.Log(transform.localPosition);
+        //}
     }
 
     public void Interact(PlayerInteract player)
