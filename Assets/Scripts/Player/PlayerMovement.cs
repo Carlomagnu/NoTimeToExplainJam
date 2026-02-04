@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] float playerHeight;
     [SerializeField] LayerMask groundLayer;
-    bool isGrounded;
+    public bool isGrounded;
 
     [Header("Jumping")]
     [SerializeField] float jumpForce;

@@ -22,6 +22,10 @@ public class Door : MonoBehaviour, IInteractable
     private Vector3 leftOpenPos;
     private Vector3 rightOpenPos;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource doorAudio;
+    [SerializeField] private AudioClip doorOpen;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,11 +59,14 @@ public class Door : MonoBehaviour, IInteractable
         interactionZone.enabled = false;
 
         // Open doors
+        doorAudio.PlayOneShot(doorOpen);
         yield return MoveDoors(leftClosedPos, rightClosedPos, leftOpenPos, rightOpenPos);
 
         // Wait and close doors
 
         yield return new WaitForSeconds(autoCloseDelay);
+
+        doorAudio.PlayOneShot(doorOpen);
         yield return MoveDoors(leftOpenPos,rightOpenPos,leftClosedPos,rightClosedPos);
 
         interactionZone.enabled = true;
