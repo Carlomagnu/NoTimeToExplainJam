@@ -109,4 +109,9 @@ public class PlayerInteract : MonoBehaviour
         if (col) col.enabled = true;
 
     }
+
+    public GameObject GetHeldItem()
+    {
+        return inHandItem;
+    }
 }
