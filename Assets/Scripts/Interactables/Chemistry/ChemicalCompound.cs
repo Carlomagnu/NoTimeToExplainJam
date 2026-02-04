@@ -20,7 +20,7 @@ public class ChemicalCompound : MonoBehaviour, IInteractable
     [Header("Compound Properties")]
     [SerializeField] private string compoundName;
     [SerializeField] private State state;
-    [SerializeField] private pH pH;
+    [SerializeField] private pH pHLevel;
     [SerializeField] private bool containsCopper;
 
     [Header("Visual")]
@@ -29,7 +29,7 @@ public class ChemicalCompound : MonoBehaviour, IInteractable
 
     public string CompoundName => compoundName;
     public State CurrentState => state;
-    public pH CurrentPH => pH;
+    public pH CurrentPH => pHLevel;
     public bool ContainsCopper => containsCopper;
 
     private void Start()
@@ -53,7 +53,7 @@ public class ChemicalCompound : MonoBehaviour, IInteractable
     {
         compoundName = newCompoundName;
         state = newState;
-        pH = newPH;
+        pHLevel = newPH;
         containsCopper = newContainsCopper;
         compoundMaterial = newMaterial;
 
