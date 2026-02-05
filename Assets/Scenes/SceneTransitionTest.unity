@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: d8aac6ce45a18ec1e8004e3239309b5c, type: 2}
+  transitionOnLoad: 0
 --- !u!4 &96506031
 Transform:
   m_ObjectHideFlags: 0
