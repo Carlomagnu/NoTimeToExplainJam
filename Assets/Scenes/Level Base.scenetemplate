@@ -68,13 +68,13 @@ MonoBehaviour:
   - dependency: {fileID: 8300000, guid: 30cf5d462a0d742b99b30c354f52a163, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2100000, guid: d8aac6ce45a18ec1e8004e3239309b5c, type: 2}
-    instantiationMode: 0
+    instantiationMode: 1
   - dependency: {fileID: 4630118258159369047, guid: 9f9e8c8afa033472aa3b93946a4e38c0, type: 3}
-    instantiationMode: 0
+    instantiationMode: 1
   - dependency: {fileID: 8300000, guid: 6c3b47fb3f2414d8bb1ebcc06edfc2dd, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 13400000, guid: 53d002cefb66c4ca2b57caa6cec2ef3d, type: 2}
-    instantiationMode: 0
+    instantiationMode: 1
   - dependency: {fileID: 8300000, guid: 84fe4dd95a6a4436e8e20422cd7ba2a6, type: 3}
     instantiationMode: 1
   templatePipeline: {fileID: 0}
