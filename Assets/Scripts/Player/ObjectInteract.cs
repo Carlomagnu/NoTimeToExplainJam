@@ -75,6 +75,18 @@ public class PlayerInteract : MonoBehaviour
 
 
         inHandItem = item;
+        //Disable interaction zone collider
+        Collider[] interactColliders = item.GetComponentsInChildren<Collider>();
+
+        foreach (Collider c in interactColliders)
+        {
+            if (c.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {
+                c.enabled = false;
+            }
+        }
+
+
         item.transform.SetParent(pickUpParent, false);
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
@@ -98,6 +110,17 @@ public class PlayerInteract : MonoBehaviour
         if (!inHandItem) return;
 
         GameObject item = inHandItem;
+
+        //DEnable interaction zone collider
+        Collider[] interactColliders = item.GetComponentsInChildren<Collider>();
+
+        foreach (Collider c in interactColliders)
+        {
+            if (c.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {
+                c.enabled = true;
+            }
+        }
 
         item.transform.SetParent(null);
         inHandItem = null;
