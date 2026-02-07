@@ -3,21 +3,6 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-enum Joke
-{
-    First,
-    Second,
-    Third,
-    Finished
-}
-
-enum State
-{
-    Audience,
-    Narrator,
-    Player,
-    Idle
-}
 
 public class TheaterStateMachine : MonoBehaviour
 {
@@ -29,6 +14,22 @@ public class TheaterStateMachine : MonoBehaviour
     AudioClip heavyLaughter;
     [SerializeField]
     GameObject audienceLights;
+
+    enum Joke
+    {
+        First,
+        Second,
+        Third,
+        Finished
+    }
+
+    enum State
+    {
+        Audience,
+        Narrator,
+        Player,
+        Idle
+    }
 
     private Joke currentJoke = Joke.First;
     private State currentState = State.Narrator;
