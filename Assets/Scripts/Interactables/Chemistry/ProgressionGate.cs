@@ -10,7 +10,7 @@ public class ProgressionGate : MonoBehaviour, IInteractable
     [Header("Requirements for Submission")]
     [SerializeField] private bool requireCopper = true;
     [SerializeField] private ChemicalCompound.State requiredState = ChemicalCompound.State.Solid;
-    [SerializeField] private ChemicalCompound.pH requiredPH = ChemicalCompound.pH.Neutral;
+    [SerializeField] private int requiredPH = 7;
 
     [Header("Gate Reference")]
     [SerializeField] private GameObject gateToUnlock; // Reference to the actual gate prefab
@@ -65,7 +65,7 @@ public class ProgressionGate : MonoBehaviour, IInteractable
             issues.Add($"is {compound.CurrentState.ToString().ToLower()} but must be {requiredState.ToString().ToLower()}");
 
         if (compound.CurrentPH != requiredPH)
-            issues.Add($"is {compound.CurrentPH.ToString().ToLower()} but must be {requiredPH.ToString().ToLower()}");
+            issues.Add($"has pH {compound.CurrentPH} but must be pH {requiredPH}");
 
         if (issues.Count > 0)
         {

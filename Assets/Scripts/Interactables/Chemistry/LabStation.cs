@@ -18,13 +18,13 @@ public class LabStation : MonoBehaviour, IInteractable
     [Header("Required Input")]
     [SerializeField] private string requiredCompoundName;
     [SerializeField] private ChemicalCompound.State requiredState;
-    [SerializeField] private ChemicalCompound.pH requiredPH;
+    [SerializeField] private int requiredPH;
     [SerializeField] private bool requiresCopper;
 
     [Header("Output")]
     [SerializeField] private string outputCompoundName;
     [SerializeField] private ChemicalCompound.State outputState;
-    [SerializeField] private ChemicalCompound.pH outputPH;
+    [SerializeField] private int outputPH;
     [SerializeField] private bool outputContainsCopper;
     [SerializeField] private Material outputMaterial;
 
