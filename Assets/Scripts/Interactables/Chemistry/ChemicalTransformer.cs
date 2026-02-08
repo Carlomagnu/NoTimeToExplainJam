@@ -5,15 +5,42 @@ using TMPro;
 
 public class ChemicalTransformer : MonoBehaviour, IInteractable
 {
+    public enum ReagentType
+    {
+        None,
+        Copper,
+        Base,
+        Acid
+    }
+
     [SerializeField] private string deviceName = "Chemical Transformer";
+    
     
     [Header("Transformation Target")]
     [SerializeField] private string targetCompoundName;
+    [SerializeField] private bool applyTargetState = true;
     [SerializeField] private ChemicalCompound.State targetState;
     [SerializeField] private int pHChange; // Add/subtract this value from current pH
+    [SerializeField] private bool applyTargetContainsCopper = true;
     [SerializeField] private bool targetContainsCopper;
+    [SerializeField] private bool applyColorChange = true;
     [SerializeField] private Color colorChange = Color.white; // RGB offset to add to the base color
     [SerializeField] private string bottlefillMaterialName = "GPVFX_Bottle_D_Fill";
+    
+    [Header("Conditional Reactions")]
+    [SerializeField] private bool useConditionalReactions = false;
+    [SerializeField] private string conditionalCompoundName;
+    [SerializeField] private bool applyConditionalState = true;
+    [SerializeField] private ChemicalCompound.State conditionalTargetState;
+    [SerializeField] private int conditionalPHChange = 0;
+    [SerializeField] private bool applyConditionalContainsCopper = false;
+    [SerializeField] private bool conditionalContainsCopper;
+    [SerializeField] private bool applyConditionalColorChange = true;
+    [SerializeField] private Color conditionalColorChange = Color.white;
+    [SerializeField] private bool requireCopperForConditional = false;
+    [SerializeField] private ChemicalCompound.State requiredStateForConditional = ChemicalCompound.State.Liquid;
+    [SerializeField] private bool requireSpecificPHForConditional = false;
+    [SerializeField] private int requiredPHForConditional = 7;
 
     [Header("Error Display")]
     [SerializeField] private TextMeshProUGUI errorMessageDisplay;
@@ -44,37 +71,57 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
         // Calculate new pH with limits (0-14)
         int newPH = Mathf.Clamp(heldCompound.CurrentPH + pHChange, 0, 14);
 
+        // Check if conditional reaction should occur
+        string effectiveCompoundName = targetCompoundName;
+        ChemicalCompound.State effectiveState = heldCompound.CurrentState; // Preserve current state by default
+        Color effectiveColorChange = colorChange;
+        bool effectiveContainsCopper = heldCompound.ContainsCopper; // Preserve current state by default
+        bool shouldApplyColorChange = applyColorChange;
+        
+        if (useConditionalReactions && CheckConditionalReactionConditions(heldCompound))
+        {
+            Debug.Log($"{deviceName}: Conditional reaction triggered!");
+            effectiveCompoundName = conditionalCompoundName;
+            effectiveColorChange = conditionalColorChange;
+            shouldApplyColorChange = applyConditionalColorChange;
+            newPH = Mathf.Clamp(heldCompound.CurrentPH + conditionalPHChange, 0, 14);
+            
+            if (applyConditionalState)
+            {
+                effectiveState = conditionalTargetState;
+            }
+            
+            if (applyConditionalContainsCopper)
+            {
+                effectiveContainsCopper = conditionalContainsCopper;
+            }
+        }
+        else
+        {
+            if (applyTargetState)
+            {
+                effectiveState = targetState;
+            }
+            
+            if (applyTargetContainsCopper)
+            {
+                effectiveContainsCopper = targetContainsCopper;
+            }
+        }
+
         // Transform the held compound to match the target properties
         heldCompound.TransformCompound(
-            targetCompoundName,
-            targetState,
+            effectiveCompoundName,
+            effectiveState,
             newPH,
-            targetContainsCopper,
+            effectiveContainsCopper,
             null
         );
 
-        // Update the color of GPVFX_Bottle_Fill material
-        MeshRenderer renderer = heldItem.GetComponent<MeshRenderer>();
-        if (renderer != null)
+        // Update the color only if enabled
+        if (shouldApplyColorChange)
         {
-            Material[] materials = renderer.materials;
-            foreach (Material mat in materials)
-            {
-                if (mat.name.Contains(bottlefillMaterialName))
-                {
-                    // Get current color and add the color change
-                    Color currentColor = mat.GetColor("_BaseColor");
-                    Color newColor = currentColor + colorChange;
-                    
-                    // Clamp RGB values between 0-1
-                    newColor.r = Mathf.Clamp01(newColor.r);
-                    newColor.g = Mathf.Clamp01(newColor.g);
-                    newColor.b = Mathf.Clamp01(newColor.b);
-                    newColor.a = currentColor.a; // Preserve alpha
-                    
-                    mat.SetColor("_BaseColor", newColor);
-                }
-            }
+            UpdateBottleColor(heldItem, effectiveColorChange);
         }
 
         // Show the updated item info in the UI
@@ -83,7 +130,28 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
             itemDisplayUI.DisplayCompound(heldCompound);
         }
 
-        Debug.Log($"{deviceName}: Successfully transformed compound to {targetCompoundName} (pH: {newPH})!");
+        Debug.Log($"{deviceName}: Successfully transformed compound to {effectiveCompoundName} (pH: {newPH})!");
+    }
+
+    private bool CheckConditionalReactionConditions(ChemicalCompound compound)
+    {
+        // Check if the required conditions for the conditional reaction are met
+        if (requireCopperForConditional && !compound.ContainsCopper)
+        {
+            return false;
+        }
+
+        if (compound.CurrentState != requiredStateForConditional)
+        {
+            return false;
+        }
+
+        if (requireSpecificPHForConditional && compound.CurrentPH != requiredPHForConditional)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void ShowError(string errorMessage)
@@ -123,5 +191,46 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
             errorMessageDisplay.alpha = 0f;
             errorMessageDisplay.text = "";
         }
+    }
+
+    private void UpdateBottleColor(GameObject heldItem, Color colorToApply)
+    {
+        // Search for the bottle fill renderer by its game object name
+        MeshRenderer[] renderers = heldItem.GetComponentsInChildren<MeshRenderer>();
+        
+        foreach (MeshRenderer renderer in renderers)
+        {
+            // Check if this renderer's game object matches the bottle fill object name
+            if (renderer.gameObject.name.Contains(bottlefillMaterialName))
+            {
+                Material[] materials = renderer.materials;
+                
+                for (int i = 0; i < materials.Length; i++)
+                {
+                    Material mat = materials[i];
+                    
+                    // Create a material instance so changes don't affect other instances
+                    Material matInstance = new Material(mat);
+                    
+                    // Get the current color to preserve alpha
+                    Color currentColor = matInstance.GetColor("_BaseColor");
+                    
+                    // Set the color directly (instead of adding to it)
+                    Color newColor = colorToApply;
+                    newColor.a = currentColor.a; // Preserve alpha
+                    
+                    matInstance.SetColor("_BaseColor", newColor);
+                    materials[i] = matInstance;
+                    
+                    Debug.Log($"{deviceName}: Changed bottle color to {newColor}");
+                }
+                
+                // Apply modified materials back to the renderer
+                renderer.materials = materials;
+                return; // Found and updated the bottle fill, no need to continue
+            }
+        }
+        
+        Debug.LogWarning($"{deviceName}: Could not find renderer named '{bottlefillMaterialName}' on {heldItem.name}");
     }
 }

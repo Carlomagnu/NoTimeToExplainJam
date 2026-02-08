@@ -313,7 +313,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.5523, y: 3.022, z: -1.5193822}
-  m_LocalScale: {x: 0.23986, y: 0.23986, z: 0.23986}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 28565635528938533}
@@ -339,7 +339,7 @@ MonoBehaviour:
   pHLevel: 7
   containsCopper: 0
   compoundColor: {r: 0, g: 0, b: 0, a: 0}
-  compoundMaterial: {fileID: 0}
+  compoundMaterial: {fileID: 2100000, guid: c5d81214b2af0493082fef7a9ef0dca2, type: 2}
 --- !u!114 &4911313982795028691
 MonoBehaviour:
   m_ObjectHideFlags: 0

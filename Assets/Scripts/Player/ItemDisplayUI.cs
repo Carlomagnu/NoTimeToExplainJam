@@ -105,6 +105,7 @@ public class ItemDisplayUI : MonoBehaviour
         string info = $"<b>{compound.CompoundName}</b>\n";
         info += $"State: {compound.CurrentState}\n";
         info += $"pH: {compound.CurrentPH}";
+        info += $" Contains Copper: {compound.ContainsCopper}";
 
         Debug.Log($"Built info text: {info}");
 
