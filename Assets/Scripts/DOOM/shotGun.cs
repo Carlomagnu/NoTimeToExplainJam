@@ -41,6 +41,11 @@ public class shotGun : MonoBehaviour, IInteractable
     private Vector3 targetRotation;
     private Vector3 currentRotation;
 
+    //Blood
+    private bool hasBled;
+    [SerializeField] int maxBlood = 2;
+    private int activeBlood;
+
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +91,7 @@ public class shotGun : MonoBehaviour, IInteractable
 
     void Fire()
     {
+        hasBled = false;
         for (int i = 0; i < pelletCount; i++)
         {
             Vector3 spreadDir =
@@ -105,6 +111,12 @@ public class shotGun : MonoBehaviour, IInteractable
                 Debug.Log("Hit: " + hit.collider.name);
 
                 SpawnImpact(hit);
+                if (!hasBled)
+                {
+                    spawnBlood(hit);
+                    hasBled = true;
+                }
+
                 DrawDebugCircle(hit.point, hit.normal);
             }
         }
@@ -208,5 +220,30 @@ public class shotGun : MonoBehaviour, IInteractable
             targetRotation,
             recoilSnappiness * Time.deltaTime
         );
+    }
+
+    //Spawns blood if the object is bleedable
+    void spawnBlood(RaycastHit hit)
+    {
+        if (activeBlood >= maxBlood)
+        {
+            return;
+        }
+        Ibleedable bleedable =
+        hit.collider.GetComponentInParent<Ibleedable>();
+
+        
+        if (bleedable != null)
+        {
+            bleedable.bleed(hit);
+            activeBlood++;
+            StartCoroutine(ReleaseBlood());
+        }
+    }
+
+    IEnumerator ReleaseBlood()
+    {
+        yield return new WaitForSeconds(7f);
+        activeBlood--;
     }
 }

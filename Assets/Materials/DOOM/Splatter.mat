@@ -71,6 +71,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -85,10 +86,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BloodColour: {r: 0.8207547, g: 0.08130116, b: 0.08130116, a: 0}
+    - _BloodColour: {r: 0.5, g: 0.0070754588, b: 0.0070754588, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColour: {r: 1, g: 0, b: 0, a: 0}
+    - _EmissionColour: {r: 0.019046348, g: 0.00068293576, b: 0.0005311722, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2981352083748642242
 MonoBehaviour:

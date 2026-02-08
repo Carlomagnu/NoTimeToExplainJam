@@ -151,11 +151,11 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BloodColour: {r: 0.8207547, g: 0.08130116, b: 0.08130116, a: 0}
+    - _BloodColour: {r: 0.38679248, g: 0.009122463, b: 0.009122463, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColour: {r: 1, g: 0, b: 0, a: 0}
+    - _EmissionColour: {r: 0.057489175, g: 0, b: 0, a: 0}
     - _SpecularColour: {r: 0.9716981, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &973989047193396169

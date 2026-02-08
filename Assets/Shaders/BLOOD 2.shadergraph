@@ -1005,17 +1005,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HairData",
-    "m_ObjectId": "c550a4b6f1b147338e2e553a66cb1bbe",
-    "m_MaterialType": 0,
-    "m_ScatteringMode": 0,
-    "m_DirectionalFractionMode": 0,
-    "m_ColorParameterization": 0,
-    "m_GeometryType": 0
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "c563b0c0caa044318e0842b8f475cc60",
     "m_Group": {
@@ -1340,9 +1329,6 @@
         },
         {
             "m_Id": "4348d26d9bf94858af3df2d9557c6efa"
-        },
-        {
-            "m_Id": "c550a4b6f1b147338e2e553a66cb1bbe"
         }
     ],
     "m_CustomEditorGUI": "",
