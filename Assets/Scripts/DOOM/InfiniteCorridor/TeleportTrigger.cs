@@ -18,5 +18,12 @@ public class TeleportTrigger : MonoBehaviour
             thisDoor.position;
 
         other.transform.position += new Vector3(offset.x, offset.y, offset.z);
+        PosterState[] posters =
+        FindObjectsOfType<PosterState>();
+
+        foreach (var poster in posters)
+        {
+            poster.RandomizeState();
+        }
     }
 }

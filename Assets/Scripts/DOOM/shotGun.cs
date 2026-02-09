@@ -116,6 +116,7 @@ public class shotGun : MonoBehaviour, IInteractable
                     spawnBlood(hit);
                     hasBled = true;
                 }
+                HandlePosterHit(hit);
 
                 DrawDebugCircle(hit.point, hit.normal);
             }
@@ -245,5 +246,17 @@ public class shotGun : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(7f);
         activeBlood--;
+    }
+
+    // For posters
+    void HandlePosterHit(RaycastHit hit)
+    {
+        IPoster poster =
+            hit.collider.GetComponentInParent<IPoster>();
+
+        if (poster != null)
+        {
+            poster.OnShot(hit);
+        }
     }
 }
