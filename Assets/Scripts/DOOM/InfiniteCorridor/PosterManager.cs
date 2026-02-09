@@ -7,7 +7,13 @@ public class PosterManager : MonoBehaviour
     public PosterState referencePoster;
     public PosterState[] otherPosters;
 
-    public GameObject exitDoor;
+    //Sounds
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip victory;
+
+    //Lift
+    [SerializeField] ElevatorController elevator;
+
 
     private void Awake()
     {
@@ -31,8 +37,12 @@ public class PosterManager : MonoBehaviour
     void Solve()
     {
         Debug.Log("Posters matched!");
+        victorySound();
+        elevator.CallElevator();
+    }
 
-        if (exitDoor)
-            exitDoor.SetActive(true);
+    private void victorySound()
+    {
+        source.PlayOneShot(victory);
     }
 }

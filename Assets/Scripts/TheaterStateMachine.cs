@@ -7,32 +7,41 @@ using UnityEngine;
 public class TheaterStateMachine : MonoBehaviour
 {
     [SerializeField]
-    AudioSource audioSource;
+    AudioSource audienceAudio;
     [SerializeField]
     AudioClip lightLaughter;
     [SerializeField]
     AudioClip heavyLaughter;
     [SerializeField]
     GameObject audienceLights;
+    [SerializeField]
+    AudioClip[] narratorLines;
+    [SerializeField]
+    AudioSource narratorAudio;
+    [SerializeField]
+    GameObject audioVisualiser;
+    [SerializeField]
+    AudioClip lightActivateSound;
+    [SerializeField]
+    GameObject applauseLight;
 
-    enum Joke
+    public enum Joke
     {
         First,
         Second,
         Third,
-        Finished
     }
 
-    enum State
+    public enum State
     {
         Audience,
         Narrator,
         Player,
-        Idle
+        Finished
     }
 
-    private Joke currentJoke = Joke.First;
-    private State currentState = State.Narrator;
+    public Joke currentJoke = Joke.First;
+    public State currentState = State.Narrator;
 
     void Start()
     {
@@ -46,14 +55,7 @@ public class TheaterStateMachine : MonoBehaviour
             if(currentState == State.Audience)
             {
                 audienceLights.SetActive(true);
-                if(currentJoke == Joke.First)
-                {
-                    audioSource.PlayOneShot(lightLaughter);
-                }
-                else if (currentJoke == Joke.Second)
-                {
-                    audioSource.PlayOneShot(heavyLaughter);
-                }
+                yield return StartCoroutine(playAudienceSound());
                 yield return StartCoroutine(waitForLaughter());
                 nextState();
             }
@@ -67,9 +69,30 @@ public class TheaterStateMachine : MonoBehaviour
         }
     }
 
+    IEnumerator playAudienceSound()
+    {
+        audienceAudio.PlayOneShot(lightActivateSound);
+        yield return new WaitForSeconds(1f);
+        if(currentJoke == Joke.First)
+        {
+            audienceAudio.PlayOneShot(lightLaughter);
+        }
+        else if (currentJoke == Joke.Second)
+        {
+            audienceAudio.PlayOneShot(heavyLaughter);
+        }
+        else if(currentJoke == Joke.Third)
+        {
+            yield return new WaitForSeconds(5f);
+            audienceAudio.PlayOneShot(lightActivateSound);
+            applauseLight.SetActive(true);
+        }
+        yield return null;
+    }
+
     IEnumerator waitForLaughter()
     {
-        while (audioSource.isPlaying)
+        while (audienceAudio.isPlaying)
         {
             yield return null;
         }
@@ -77,6 +100,22 @@ public class TheaterStateMachine : MonoBehaviour
 
     IEnumerator waitForNarrator()
     {
+        switch (currentJoke)
+        {
+            case Joke.First:
+                narratorAudio.PlayOneShot(narratorLines[0]);
+                break;
+            case Joke.Second:
+                narratorAudio.PlayOneShot(narratorLines[1]);
+                break;
+            case Joke.Third:
+                narratorAudio.PlayOneShot(narratorLines[2]);
+                break;
+        }
+        while (narratorAudio.isPlaying)
+        {
+            yield return null;
+        }
         yield return null;
     }
 
@@ -86,14 +125,25 @@ public class TheaterStateMachine : MonoBehaviour
         {
             case State.Narrator:
                 currentState = State.Player;
+                audioVisualiser.SetActive(true);
                 break;
             case State.Player:
                 currentState = State.Audience;
+                audioVisualiser.SetActive(false);
                 break;
             case State.Audience:
                 currentState = State.Narrator;
                 nextJoke();
                 break;
+        }
+    }
+
+    public void nextStateBtn()
+    {
+        if(currentState == State.Player)
+        {
+            currentState = State.Audience;
+            audioVisualiser.SetActive(false);
         }
     }
 
@@ -108,7 +158,7 @@ public class TheaterStateMachine : MonoBehaviour
                 currentJoke = Joke.Third;
                 break;
             case Joke.Third:
-                currentJoke = Joke.Finished;
+                currentState = State.Finished;
                 break;
         }        
     }

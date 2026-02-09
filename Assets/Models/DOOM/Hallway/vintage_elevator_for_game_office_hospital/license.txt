@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vintage Elevator for Game (office/ hospital)
+* source:	https://sketchfab.com/3d-models/vintage-elevator-for-game-office-hospital-2fbce7341f554861955eb3cc6bb532d7
+* author:	the3dCartel (https://sketchfab.com/the3dcartel)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vintage Elevator for Game (office/ hospital)" (https://sketchfab.com/3d-models/vintage-elevator-for-game-office-hospital-2fbce7341f554861955eb3cc6bb532d7) by the3dCartel (https://sketchfab.com/the3dcartel) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

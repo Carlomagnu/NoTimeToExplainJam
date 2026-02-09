@@ -104,6 +104,7 @@ public class shotGun : MonoBehaviour, IInteractable
                 spreadDir
             );
 
+            //Only one pellet please
             if (Physics.Raycast(ray, out RaycastHit hit, range, hitLayers))
             {
                 Debug.Log("Hit: " + hit.collider.name);
@@ -112,16 +113,17 @@ public class shotGun : MonoBehaviour, IInteractable
                 if (!hasBled)
                 {
                     spawnBlood(hit);
+                    HandlePosterHit(hit);
                     hasBled = true;
                 }
-                HandlePosterHit(hit);
+ 
 
                 DrawDebugCircle(hit.point, hit.normal);
             }
         }
 
         // Camera shake and immpact
-        speaker.PlayOneShot(shoot);
+        speaker.PlayOneShot(shoot, 0.8f);
         CameraShake.Instance?.Shake(shakeDuration, shakeMagnitude);
         ApplyRecoil();
     }
