@@ -50,6 +50,7 @@ public class TheaterStateMachine : MonoBehaviour
 
     IEnumerator stateLoop()
     {
+        yield return new WaitForSeconds(7f);
         while (true)
         {
             if(currentState == State.Audience)
