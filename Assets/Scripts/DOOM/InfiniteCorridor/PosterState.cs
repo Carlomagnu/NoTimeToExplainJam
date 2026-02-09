@@ -4,6 +4,7 @@ public class PosterState : MonoBehaviour, IPoster
 {
     [Header("Poster Materials")]
     public Material[] states;
+    [SerializeField] private PosterManager manager;
 
     [Header("Settings")]
     public bool isReferencePoster = false;
@@ -14,7 +15,7 @@ public class PosterState : MonoBehaviour, IPoster
     private void Awake()
     {
         rend = GetComponent<Renderer>();
-        ApplyState();
+        RandomizeState();
     }
 
     // Called when hallway loops
@@ -30,6 +31,7 @@ public class PosterState : MonoBehaviour, IPoster
     public void OnShot(RaycastHit hit)
     {
         CycleState();
+        manager.CheckSolved();
     }
 
 
