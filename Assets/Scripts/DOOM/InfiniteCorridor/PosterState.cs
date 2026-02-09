@@ -30,6 +30,7 @@ public class PosterState : MonoBehaviour, IPoster
     // Called when shots
     public void OnShot(RaycastHit hit)
     {
+        if (isReferencePoster) return;
         CycleState();
         manager.CheckSolved();
     }
