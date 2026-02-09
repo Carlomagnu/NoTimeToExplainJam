@@ -17,7 +17,15 @@ public class ElevatorController : MonoBehaviour
     //Getting in
     [SerializeField] GameObject restrict;
 
-    private bool isDescending;
+    [Header("Lift Bars")]
+    [SerializeField] Transform liftBars;
+    [SerializeField] float barsOpenHeight = 2f;
+    [SerializeField] float barsSpeed = 2f;
+    private Vector3 barsClosedPos;
+    private Vector3 barsOpenPos;
+    private bool openingBars = false;
+
+    public bool isDescending;
     private bool isAscending;
 
     void Update()
@@ -30,12 +38,18 @@ public class ElevatorController : MonoBehaviour
         {
             MoveUp();
         }
+        if (openingBars)
+            OpenBars();
     }
 
     private void Awake()
     {
         transform.position = topPoint.position;
         restrict.SetActive(false);
+
+        // Store bar positions
+        barsClosedPos = liftBars.localPosition;
+        barsOpenPos = barsClosedPos + Vector3.up * barsOpenHeight;
     }
 
     public void CallElevator()
@@ -95,8 +109,23 @@ public class ElevatorController : MonoBehaviour
     void OnArrivedAtTop()
     {
         Debug.Log("Elevator reached upper level");
-
+        openingBars = true;
         // Open rails / doors
         // Trigger next scene / hallway
+    }
+
+    void OpenBars()
+    {
+        liftBars.localPosition = Vector3.MoveTowards(
+            liftBars.localPosition,
+            barsOpenPos,
+            barsSpeed * Time.deltaTime
+        );
+
+        if (Vector3.Distance(liftBars.localPosition, barsOpenPos) < 0.01f)
+        {
+            openingBars = false;
+            Debug.Log("Bars opened");
+        }
     }
 }

@@ -9,6 +9,7 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteract player)
     {
+        if (elevator.isDescending) return;
 
         EnterLift(player);
     }
