@@ -43,8 +43,6 @@ public class shotGun : MonoBehaviour, IInteractable
 
     //Blood
     private bool hasBled;
-    [SerializeField] int maxBlood = 2;
-    private int activeBlood;
 
 
     // Start is called before the first frame update
@@ -116,6 +114,7 @@ public class shotGun : MonoBehaviour, IInteractable
                     spawnBlood(hit);
                     hasBled = true;
                 }
+                HandlePosterHit(hit);
 
                 DrawDebugCircle(hit.point, hit.normal);
             }
@@ -225,10 +224,6 @@ public class shotGun : MonoBehaviour, IInteractable
     //Spawns blood if the object is bleedable
     void spawnBlood(RaycastHit hit)
     {
-        if (activeBlood >= maxBlood)
-        {
-            return;
-        }
         Ibleedable bleedable =
         hit.collider.GetComponentInParent<Ibleedable>();
 
@@ -236,14 +231,19 @@ public class shotGun : MonoBehaviour, IInteractable
         if (bleedable != null)
         {
             bleedable.bleed(hit);
-            activeBlood++;
-            StartCoroutine(ReleaseBlood());
         }
     }
 
-    IEnumerator ReleaseBlood()
+
+    // For posters
+    void HandlePosterHit(RaycastHit hit)
     {
-        yield return new WaitForSeconds(7f);
-        activeBlood--;
+        IPoster poster =
+            hit.collider.GetComponentInParent<IPoster>();
+
+        if (poster != null)
+        {
+            poster.OnShot(hit);
+        }
     }
 }
