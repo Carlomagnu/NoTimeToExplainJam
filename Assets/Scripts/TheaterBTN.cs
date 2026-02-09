@@ -9,6 +9,6 @@ public class TheaterBTN : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteract interactor)
     {
-        theaterStateMachine.nextState();
+        theaterStateMachine.nextStateBtn();
     }
 }
