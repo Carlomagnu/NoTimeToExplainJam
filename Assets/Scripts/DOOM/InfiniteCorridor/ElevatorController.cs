@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ElevatorController : MonoBehaviour
 {
@@ -102,7 +103,6 @@ public class ElevatorController : MonoBehaviour
     public void StartMoveUp()  
     {
         Debug.Log("Starting move up");
-
         isAscending = true;
     }
 

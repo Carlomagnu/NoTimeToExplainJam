@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ElevatorInteract : MonoBehaviour, IInteractable
 {
@@ -21,21 +23,13 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
         // Snap position
         playerT.position = playerSnapPoint.position;
 
-        // Parent to lift so they move with it
-        //playerT.SetParent(elevator.transform);
-
-        // Disable movement
-        //PlayerMovement movement =
-        //    player.GetComponent<PlayerMovement>();
-
-        //if (movement)
-        //    movement.enabled = false;
-
-
         Debug.Log("Player entered lift");
-        elevator.StartMoveUp();
+        StartCoroutine(StartLiftNextFrame());
+    }
 
-        // Next step later:
-        // elevator.StartAscent();
+    IEnumerator StartLiftNextFrame()
+    {
+        yield return 1f;
+        elevator.StartMoveUp();
     }
 }
