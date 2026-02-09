@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Loading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +12,13 @@ public class SceneTransition : MonoBehaviour
     Material mat;
     [SerializeField]
     bool transitionOnLoad = true;
+    [SerializeField]
+    private float animationTime = 2f;
+    [SerializeField]
+    private float loadInTime = 4f;
+    [SerializeField]
+    private float loadOutTime = 4f;
 
-    const float TRANSITION_TIME = 6f;
     /* 
         Not really semaphore but the transition animation needs to fully complete for all elements that should be "consumed" so if
         the lock is ever above 0 then the next level should not be loaded
@@ -29,9 +36,19 @@ public class SceneTransition : MonoBehaviour
 
     void Start()
     {
+        validateData();
+
         if (transitionOnLoad)
         {
             StartCoroutine(startAllTransitions(true));
+        }
+    }
+
+    void validateData()
+    {
+        if(animationTime > loadInTime || animationTime > loadOutTime)
+        {
+            animationTime = Math.Min(loadInTime, loadOutTime);
         }
     }
 
@@ -96,21 +113,35 @@ public class SceneTransition : MonoBehaviour
         transitionSemaphore++;
         GameObject[] gameObjects = GameObject.FindObjectsOfType<GameObject>();
 
+        float delay;
+
+        if (reverse)
+        {
+            delay = loadInTime - animationTime;
+        }
+        else
+        {
+            delay = loadOutTime - animationTime;
+        }
+
+        delay /= gameObjects.Length;
+
+
         foreach(GameObject gameObject in gameObjects)
         {
             Renderer renderer = gameObject.GetComponent<Renderer>();
             if(renderer != null)
             {
-                StartCoroutine(transitionEffect(gameObject, reverse));
+                StartCoroutine(startAnimation(gameObject, reverse));
 
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(delay);
             }
         }
         transitionSemaphore--;
 
     }
 
-    private IEnumerator transitionEffect(GameObject gameObject, bool reverse)
+    private IEnumerator startAnimation(GameObject gameObject, bool reverse)
     {
         //Critical sectcion
         animationSemaphore++;
@@ -122,9 +153,9 @@ public class SceneTransition : MonoBehaviour
             float val;
             Material material = renderer.materials[^1];
 
-            while(timeElapsed <= TRANSITION_TIME)
+            while(timeElapsed <= animationTime)
             {
-                float progress = timeElapsed / TRANSITION_TIME;
+                float progress = timeElapsed / animationTime;
 
                 if (reverse)
                 {
