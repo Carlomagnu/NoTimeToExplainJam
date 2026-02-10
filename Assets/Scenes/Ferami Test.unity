@@ -351,7 +351,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -398,7 +398,8 @@ MonoBehaviour:
   increaseDuration: 3
   delayBeforeDecrease: 2
   decreaseDuration: 3
-  targetFogDensity: 0.4
+  targetFogDensity: 0.5
+  enemyMoveFogDensity: 0.2
 --- !u!1 &796733929
 GameObject:
   m_ObjectHideFlags: 0
