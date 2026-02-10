@@ -14,12 +14,26 @@ public class ProgressionLockedDoor : MonoBehaviour, IInteractable
     [Header("Auto Open Settings")]
     [SerializeField] private bool autoOpenWhenUnlocked = true; // New setting
 
+    [Header("Scene Transition Settings")]
+    [SerializeField] private bool useSceneTransition = true;
+    [SerializeField] private float transitionDelay = 2f; // Delay in seconds before transitioning
+    [SerializeField] private SceneTransition sceneTransition;
+    [SerializeField] private string nextSceneName = ""; // Name of the scene to load
+
+    private Coroutine transitionCoroutine;
+
     private void Awake()
     {
         // Cache the Door component if not assigned
         if (doorComponent == null)
         {
             doorComponent = GetComponent<Door>();
+        }
+
+        // Cache the SceneTransition component if not assigned
+        if (sceneTransition == null)
+        {
+            sceneTransition = GetComponentInChildren<SceneTransition>();
         }
     }
 
@@ -41,6 +55,12 @@ public class ProgressionLockedDoor : MonoBehaviour, IInteractable
         if (doorComponent != null)
         {
             doorComponent.Interact(player);
+            
+            // Start the scene transition after delay if enabled
+            if (useSceneTransition && sceneTransition != null && transitionCoroutine == null)
+            {
+                transitionCoroutine = StartCoroutine(TransitionAfterDelay());
+            }
         }
     }
 
@@ -58,6 +78,12 @@ public class ProgressionLockedDoor : MonoBehaviour, IInteractable
             if (player != null)
             {
                 doorComponent.Interact(player);
+                
+                // Start the scene transition after delay if enabled
+                if (useSceneTransition && sceneTransition != null && transitionCoroutine == null)
+                {
+                    transitionCoroutine = StartCoroutine(TransitionAfterDelay());
+                }
             }
             else
             {
@@ -70,5 +96,31 @@ public class ProgressionLockedDoor : MonoBehaviour, IInteractable
     {
         // Allows ProgressionGate to activate the door unlock via SendMessage
         Unlock();
+    }
+
+    private IEnumerator TransitionAfterDelay()
+    {
+        Debug.Log($"{gameObject.name}: Scene transition will occur in {transitionDelay} seconds...");
+        
+        yield return new WaitForSeconds(transitionDelay);
+        
+        if (sceneTransition != null)
+        {
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                Debug.Log($"{gameObject.name}: Triggering scene transition to {nextSceneName}!");
+                sceneTransition.changeScene(nextSceneName);
+            }
+            else
+            {
+                Debug.LogWarning($"{gameObject.name}: Next scene name is not set!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name}: SceneTransition component not found!");
+        }
+        
+        transitionCoroutine = null;
     }
 }

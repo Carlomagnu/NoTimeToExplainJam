@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Do Not Do This.unity
     guid: 3eb075c1d0f45f686b3cf73335e149c9
+  - enabled: 1
+    path: Assets/Scenes/Jadon Test.unity
+    guid: 6ae00f570700e4ecca8618d8cc302a6f
   m_configObjects: {}

@@ -49,6 +49,15 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
     [Header("UI Feedback")]
     [SerializeField] private ItemDisplayUI itemDisplayUI;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip successSound;
+    [SerializeField] private AudioClip conditionalReactionSound;
+    [SerializeField] private AudioClip errorSound;
+    [SerializeField] private bool playSuccessSound = true;
+    [SerializeField] private bool playConditionalSound = true;
+    [SerializeField] private bool playErrorSound = true;
+
     private Coroutine errorFadeCoroutine;
 
     public void Interact(PlayerInteract player)
@@ -77,6 +86,7 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
         Color effectiveColorChange = colorChange;
         bool effectiveContainsCopper = heldCompound.ContainsCopper; // Preserve current state by default
         bool shouldApplyColorChange = applyColorChange;
+        bool isConditionalReaction = false;
         
         if (useConditionalReactions && CheckConditionalReactionConditions(heldCompound))
         {
@@ -85,6 +95,7 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
             effectiveColorChange = conditionalColorChange;
             shouldApplyColorChange = applyConditionalColorChange;
             newPH = Mathf.Clamp(heldCompound.CurrentPH + conditionalPHChange, 0, 14);
+            isConditionalReaction = true;
             
             if (applyConditionalState)
             {
@@ -130,6 +141,19 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
             itemDisplayUI.DisplayCompound(heldCompound);
         }
 
+        // Play appropriate success audio
+        if (audioSource != null)
+        {
+            if (isConditionalReaction && playConditionalSound && conditionalReactionSound != null)
+            {
+                audioSource.PlayOneShot(conditionalReactionSound);
+            }
+            else if (playSuccessSound && successSound != null)
+            {
+                audioSource.PlayOneShot(successSound);
+            }
+        }
+
         Debug.Log($"{deviceName}: Successfully transformed compound to {effectiveCompoundName} (pH: {newPH})!");
     }
 
@@ -156,6 +180,12 @@ public class ChemicalTransformer : MonoBehaviour, IInteractable
 
     private void ShowError(string errorMessage)
     {
+        // Play error sound
+        if (audioSource != null && playErrorSound && errorSound != null)
+        {
+            audioSource.PlayOneShot(errorSound);
+        }
+
         if (errorMessageDisplay == null)
         {
             Debug.Log($"{deviceName}: {errorMessage}");

@@ -18,15 +18,21 @@ public class ProgressionGate : MonoBehaviour, IInteractable
     [Header("Gate Reference")]
     [SerializeField] private GameObject gateToUnlock; // Reference to the actual gate prefab
 
+    [Header("Cooldown Settings")]
+    [SerializeField] private float submissionCooldown = 5f; // Time before you can submit again
+    [SerializeField] private string cooldownMessage = "The mechanism is still processing. Please wait...";
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip requirementMetSound;
     [SerializeField] private AudioClip requirementFailedSound;
-    [SerializeField] private AudioClip successSound; // New success sound
+    [SerializeField] private AudioClip successSound;
+    [SerializeField] private AudioClip cooldownSound; // Sound when trying to submit during cooldown
     [SerializeField] private float soundDelay = 1f;
 
     [Header("Lock State")]
     private bool isUnlocked = false;
+    private bool isProcessing = false; // Tracks if currently evaluating a compound
 
     public bool IsUnlocked => isUnlocked;
 
@@ -44,6 +50,14 @@ public class ProgressionGate : MonoBehaviour, IInteractable
         if (isUnlocked)
         {
             Debug.Log($"{lockName}: Already unlocked!");
+            return;
+        }
+
+        // Check if currently processing a submission
+        if (isProcessing)
+        {
+            Debug.Log($"{lockName}: {cooldownMessage}");
+            PlaySound(cooldownSound);
             return;
         }
 
@@ -67,6 +81,9 @@ public class ProgressionGate : MonoBehaviour, IInteractable
 
     private IEnumerator EvaluateCompoundWithSound(ChemicalCompound compound, GameObject heldItem)
     {
+        // Set processing flag to prevent spam
+        isProcessing = true;
+
         List<string> issues = new List<string>();
         bool allRequirementsMet = true;
 
@@ -146,12 +163,18 @@ public class ProgressionGate : MonoBehaviour, IInteractable
             Debug.Log($"{lockName}: Correct compound! Lock disengaged...");
             RemoveItemFromPlayer(heldItem);
             UnlockGate();
+            
+            // No need to reset isProcessing since gate is unlocked
         }
         else
         {
             string feedback = $"{lockName}: Sample rejected. The compound ";
             feedback += string.Join(", ", issues) + ".";
             Debug.Log(feedback);
+            
+            // Wait for cooldown before allowing another submission
+            yield return new WaitForSeconds(submissionCooldown);
+            isProcessing = false;
         }
     }
 

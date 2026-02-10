@@ -7,8 +7,19 @@ public class InfiniteItem : MonoBehaviour, IInteractable
     [SerializeField] private string itemName;
     [SerializeField] private GameObject itemPrefabToInstantiate; // The prefab to spawn instead of cloning
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip interactSound;
+    [SerializeField] private bool playOnInteract = true;
+
     public void Interact(PlayerInteract player)
     {
+        // Play audio if enabled
+        if (playOnInteract && audioSource != null && interactSound != null)
+        {
+            audioSource.PlayOneShot(interactSound);
+        }
+
         // Instantiate the prefab
         GameObject itemCopy;
         if (itemPrefabToInstantiate != null)

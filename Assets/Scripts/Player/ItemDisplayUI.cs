@@ -102,10 +102,8 @@ public class ItemDisplayUI : MonoBehaviour
         Debug.Log($"DisplayCompound called for: {compound.CompoundName}");
 
         // Build the display text
-        string info = $"<b>{compound.CompoundName}</b>\n";
-        info += $"State: {compound.CurrentState}\n";
+        string info = $"";
         info += $"?? Level: {compound.CurrentPH}";
-        info += $" Contains ??????: {compound.ContainsCopper}";
 
         Debug.Log($"Built info text: {info}");
 
