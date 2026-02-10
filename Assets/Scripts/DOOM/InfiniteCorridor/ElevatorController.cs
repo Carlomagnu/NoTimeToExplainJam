@@ -31,7 +31,7 @@ public class ElevatorController : MonoBehaviour
     private bool isAscending;
 
     //PlayerAudio
-
+    [SerializeField] BossMusic musicManager;
 
     void Update()
     {
@@ -118,6 +118,7 @@ public class ElevatorController : MonoBehaviour
         speaker.Stop();
         speaker.PlayOneShot(gateOpen);
         playerBackground.Stop();
+        playMusic();
     }
 
     void OpenBars()
@@ -133,5 +134,10 @@ public class ElevatorController : MonoBehaviour
             openingBars = false;
             Debug.Log("Bars opened");
         }
+    }
+
+    private void playMusic()
+    {
+        musicManager.PlayDoomMusic();
     }
 }
