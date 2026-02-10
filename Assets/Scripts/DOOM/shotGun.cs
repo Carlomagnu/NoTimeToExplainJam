@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class shotGun : MonoBehaviour, IInteractable
@@ -114,16 +113,17 @@ public class shotGun : MonoBehaviour, IInteractable
                 {
                     spawnBlood(hit);
                     HandlePosterHit(hit);
+                    HitBoss(hit);
                     hasBled = true;
                 }
- 
+
 
                 DrawDebugCircle(hit.point, hit.normal);
             }
         }
 
         // Camera shake and immpact
-        speaker.PlayOneShot(shoot, 0.8f);
+        speaker.PlayOneShot(shoot, 0.3f);
         CameraShake.Instance?.Shake(shakeDuration, shakeMagnitude);
         ApplyRecoil();
     }
@@ -229,7 +229,7 @@ public class shotGun : MonoBehaviour, IInteractable
         Ibleedable bleedable =
         hit.collider.GetComponentInParent<Ibleedable>();
 
-        
+
         if (bleedable != null)
         {
             bleedable.bleed(hit);
@@ -247,5 +247,15 @@ public class shotGun : MonoBehaviour, IInteractable
         {
             poster.OnShot(hit);
         }
+    }
+
+    void HitBoss(RaycastHit hit)
+    {
+        Boss boss = hit.collider.GetComponentInParent<Boss>();
+        if (boss != null)
+        {
+            boss.TakeDamage(20);
+        }
+
     }
 }

@@ -25,11 +25,18 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
 
         Debug.Log("Player entered lift");
         StartCoroutine(StartLiftNextFrame());
+        StartCoroutine(StartLiftNextNextFrame());
     }
 
     IEnumerator StartLiftNextFrame()
     {
         yield return 1f;
+        elevator.StartMoveUp();
+    }
+
+    IEnumerator StartLiftNextNextFrame()
+    {
+        yield return 5f;
         elevator.StartMoveUp();
     }
 }
