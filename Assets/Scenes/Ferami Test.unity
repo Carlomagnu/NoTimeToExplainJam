@@ -377,6 +377,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 1438186000}
   UpdateSpeed: 0.1
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 8
+  sightRange: 20
+  eyePosition: {fileID: 0}
 --- !u!1 &757665506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2917855902366416769, guid: 4e58fe9d15ebe4ddca6158ceef01c80b, type: 3}
@@ -625,16 +630,28 @@ PrefabInstance:
       value: LabItem
       objectReference: {fileID: 0}
     - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.209
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.569
+      value: 4.793
       objectReference: {fileID: 0}
     - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.788
+      value: 3.38
       objectReference: {fileID: 0}
     - target: {fileID: 4901847305481764625, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_LocalRotation.w
