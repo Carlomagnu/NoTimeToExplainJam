@@ -11,12 +11,15 @@ public class ProgressionGate : MonoBehaviour, IInteractable
     [SerializeField] private bool requireCopper = true;
     [SerializeField] private ChemicalCompound.State requiredState = ChemicalCompound.State.Solid;
     [SerializeField] private int requiredPH = 7;
+    [SerializeField] private bool requireSpecificColor = true;
+    [SerializeField] private Color requiredColor = new Color(95f/255f, 255f/255f, 151f/255f, 1f);
+    [SerializeField] private string bottlefillMaterialName = "GPVFX_Bottle_D_Fill";
 
     [Header("Gate Reference")]
     [SerializeField] private GameObject gateToUnlock; // Reference to the actual gate prefab
 
     [Header("Lock State")]
-    [SerializeField] private bool isUnlocked = false;
+    private bool isUnlocked = false;
 
     public bool IsUnlocked => isUnlocked;
 
@@ -67,6 +70,13 @@ public class ProgressionGate : MonoBehaviour, IInteractable
         if (compound.CurrentPH != requiredPH)
             issues.Add($"has pH {compound.CurrentPH} but must be pH {requiredPH}");
 
+        if (requireSpecificColor)
+        {
+            Color compoundColor = GetCompoundColor(compound.gameObject);
+            if (!ColorsMatch(compoundColor, requiredColor))
+                issues.Add($"has color {compoundColor} but must be {requiredColor}");
+        }
+
         if (issues.Count > 0)
         {
             string feedback = $"{lockName}: Sample rejected. The compound ";
@@ -109,5 +119,37 @@ public class ProgressionGate : MonoBehaviour, IInteractable
 
         // Destroy the item after submission (it's consumed)
         Destroy(item);
+    }
+
+    private Color GetCompoundColor(GameObject compound)
+    {
+        // Search for the bottle fill renderer to get its color
+        MeshRenderer[] renderers = compound.GetComponentsInChildren<MeshRenderer>();
+        
+        foreach (MeshRenderer renderer in renderers)
+        {
+            if (renderer.gameObject.name.Contains(bottlefillMaterialName))
+            {
+                Material[] materials = renderer.materials;
+                
+                foreach (Material mat in materials)
+                {
+                    // Get the BaseColor from the material
+                    return mat.GetColor("_BaseColor");
+                }
+            }
+        }
+        
+        // Return white if color not found
+        return Color.white;
+    }
+
+    private bool ColorsMatch(Color color1, Color color2, float tolerance = 0.01f)
+    {
+        // Compare colors with a small tolerance for floating point precision
+        return Mathf.Abs(color1.r - color2.r) < tolerance &&
+               Mathf.Abs(color1.g - color2.g) < tolerance &&
+               Mathf.Abs(color1.b - color2.b) < tolerance &&
+               Mathf.Abs(color1.a - color2.a) < tolerance;
     }
 }
