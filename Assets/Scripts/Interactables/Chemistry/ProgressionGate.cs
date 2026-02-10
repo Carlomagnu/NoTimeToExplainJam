@@ -18,10 +18,25 @@ public class ProgressionGate : MonoBehaviour, IInteractable
     [Header("Gate Reference")]
     [SerializeField] private GameObject gateToUnlock; // Reference to the actual gate prefab
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip requirementMetSound;
+    [SerializeField] private AudioClip requirementFailedSound;
+    [SerializeField] private float soundDelay = 1f;
+
     [Header("Lock State")]
     private bool isUnlocked = false;
 
     public bool IsUnlocked => isUnlocked;
+
+    private void Awake()
+    {
+        // Cache AudioSource if not assigned
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    }
 
     public void Interact(PlayerInteract player)
     {
@@ -45,47 +60,103 @@ public class ProgressionGate : MonoBehaviour, IInteractable
             return;
         }
 
-        // Check requirements
-        if (!EvaluateCompound(compound))
-        {
-            return; // Feedback is given in EvaluateCompound
-        }
-
-        // Success! Unlock the lock
-        Debug.Log($"{lockName}: Correct compound! Lock disengaged...");
-        RemoveItemFromPlayer(heldItem);
-        UnlockGate();
+        // Start the evaluation coroutine
+        StartCoroutine(EvaluateCompoundWithSound(compound, heldItem));
     }
 
-    private bool EvaluateCompound(ChemicalCompound compound)
+    private IEnumerator EvaluateCompoundWithSound(ChemicalCompound compound, GameObject heldItem)
     {
         List<string> issues = new List<string>();
+        bool allRequirementsMet = true;
 
-        if (requireCopper && !compound.ContainsCopper)
-            issues.Add("does not contain copper");
+        // Check copper requirement
+        if (requireCopper)
+        {
+            if (compound.ContainsCopper)
+            {
+                Debug.Log($"{lockName}: ✓ Contains copper");
+                PlaySound(requirementMetSound);
+            }
+            else
+            {
+                Debug.Log($"{lockName}: ✗ Does not contain copper");
+                issues.Add("does not contain copper");
+                allRequirementsMet = false;
+                PlaySound(requirementFailedSound);
+            }
+            yield return new WaitForSeconds(soundDelay);
+        }
 
-        if (compound.CurrentState != requiredState)
+        // Check state requirement
+        if (compound.CurrentState == requiredState)
+        {
+            Debug.Log($"{lockName}: ✓ State is {requiredState.ToString().ToLower()}");
+            PlaySound(requirementMetSound);
+        }
+        else
+        {
+            Debug.Log($"{lockName}: ✗ State is {compound.CurrentState.ToString().ToLower()} but must be {requiredState.ToString().ToLower()}");
             issues.Add($"is {compound.CurrentState.ToString().ToLower()} but must be {requiredState.ToString().ToLower()}");
+            allRequirementsMet = false;
+            PlaySound(requirementFailedSound);
+        }
+        yield return new WaitForSeconds(soundDelay);
 
-        if (compound.CurrentPH != requiredPH)
+        // Check pH requirement
+        if (compound.CurrentPH == requiredPH)
+        {
+            Debug.Log($"{lockName}: ✓ pH is {requiredPH}");
+            PlaySound(requirementMetSound);
+        }
+        else
+        {
+            Debug.Log($"{lockName}: ✗ pH is {compound.CurrentPH} but must be {requiredPH}");
             issues.Add($"has pH {compound.CurrentPH} but must be pH {requiredPH}");
+            allRequirementsMet = false;
+            PlaySound(requirementFailedSound);
+        }
+        yield return new WaitForSeconds(soundDelay);
 
+        // Check color requirement
         if (requireSpecificColor)
         {
             Color compoundColor = GetCompoundColor(compound.gameObject);
-            if (!ColorsMatch(compoundColor, requiredColor))
+            if (ColorsMatch(compoundColor, requiredColor))
+            {
+                Debug.Log($"{lockName}: ✓ Color matches");
+                PlaySound(requirementMetSound);
+            }
+            else
+            {
+                Debug.Log($"{lockName}: ✗ Color is {compoundColor} but must be {requiredColor}");
                 issues.Add($"has color {compoundColor} but must be {requiredColor}");
+                allRequirementsMet = false;
+                PlaySound(requirementFailedSound);
+            }
+            yield return new WaitForSeconds(soundDelay);
         }
 
-        if (issues.Count > 0)
+        // Final result
+        if (allRequirementsMet)
+        {
+            Debug.Log($"{lockName}: Correct compound! Lock disengaged...");
+            RemoveItemFromPlayer(heldItem);
+            UnlockGate();
+        }
+        else
         {
             string feedback = $"{lockName}: Sample rejected. The compound ";
             feedback += string.Join(", ", issues) + ".";
             Debug.Log(feedback);
-            return false;
         }
+    }
 
-        return true;
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     private void UnlockGate()

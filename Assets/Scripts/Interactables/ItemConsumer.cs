@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class ItemConsumer : MonoBehaviour, IInteractable
 {
+    [Header("Consumer Settings")]
     [SerializeField] private string consumerName = "Item Consumer";
     [SerializeField] private string successMessage = "Item consumed!";
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip consumeSound;
+
+    private void Awake()
+    {
+        // Cache AudioSource if not assigned
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    }
 
     public void Interact(PlayerInteract player)
     {
@@ -15,6 +29,12 @@ public class ItemConsumer : MonoBehaviour, IInteractable
         {
             Debug.Log($"{consumerName}: You need to be holding an item!");
             return;
+        }
+
+        // Play consume sound
+        if (audioSource != null && consumeSound != null)
+        {
+            audioSource.PlayOneShot(consumeSound);
         }
 
         // Unparent the item
