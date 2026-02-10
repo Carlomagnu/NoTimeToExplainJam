@@ -216,7 +216,7 @@ MonoBehaviour:
   transitionOnLoad: 1
   animationTime: 2
   loadInTime: 4
-  loadOutTime: 4
+  loadOutTime: 4.06
 --- !u!4 &382172743
 Transform:
   m_ObjectHideFlags: 0
@@ -399,12 +399,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed234907e686ac4d95edded62e1f7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 382172742}
   delayBeforeIncrease: 2
   increaseDuration: 3
   delayBeforeDecrease: 2
   decreaseDuration: 3
   targetFogDensity: 0.5
   enemyMoveFogDensity: 0.2
+  timeBeforeSceneChange: 60
+  nextSceneName: Scenes/Do Not Do This
 --- !u!1 &796733929
 GameObject:
   m_ObjectHideFlags: 0

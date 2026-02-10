@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneTransitionEnd.unity
     guid: c8909a93586419334abeae2814a198cc
+  - enabled: 1
+    path: Assets/Scenes/Ferami Test.unity
+    guid: 42ae91dfe1c27c340b85b9c3ba08b938
+  - enabled: 1
+    path: Assets/Scenes/Do Not Do This.unity
+    guid: 3eb075c1d0f45f686b3cf73335e149c9
   m_configObjects: {}
