@@ -8,8 +8,16 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform Target;
     public float UpdateSpeed = 0.1f;
+
+    [Header("Line of Sight Settings")]
+    [SerializeField] private LayerMask obstacleMask; // Layers that block line of sight
+    [SerializeField] private float sightRange = 20f; // Maximum sight distance
+    [SerializeField] private Transform eyePosition; // Where the enemy "sees" from (optional)
+
     private FogControl fogControl;
     private NavMeshAgent Agent;
+    private Vector3 lastKnownPosition;
+    private bool hasLastKnownPosition = false;
 
     private void Awake()
     {
@@ -26,6 +34,12 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("[EnemyMovement] FogControl found and assigned.", this);
         }
+
+        // If no eye position is set, use the enemy's position
+        if (eyePosition == null)
+        {
+            eyePosition = transform;
+        }
     }
 
     private void Start()
@@ -41,6 +55,19 @@ public class EnemyMovement : MonoBehaviour
 
         while (enabled)
         {
+            // Always update last known position if we have line of sight (regardless of fog state)
+            if (Target != null)
+            {
+                bool hasLineOfSight = CheckLineOfSight();
+
+                if (hasLineOfSight)
+                {
+                    lastKnownPosition = Target.position;
+                    hasLastKnownPosition = true;
+                    Debug.Log($"[EnemyMovement] Last known position updated: {lastKnownPosition}", this);
+                }
+            }
+
             // Check if fog is active before moving
             if (fogControl != null && fogControl.isFogActive)
             {
@@ -50,11 +77,35 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(
-                        $"[EnemyMovement] Fog is active. Setting destination to Target position: {Target.position}",
-                        this
-                    );
-                    Agent.SetDestination(Target.transform.position);
+                    // Check line of sight to target
+                    bool hasLineOfSight = CheckLineOfSight();
+
+                    if (hasLineOfSight)
+                    {
+                        // Can see the player - move to their current position
+                        Debug.Log(
+                            $"[EnemyMovement] Line of sight CLEAR. Moving to Target position: {Target.position}",
+                            this
+                        );
+                        Agent.SetDestination(Target.position);
+                    }
+                    else
+                    {
+                        // Cannot see the player - move to last known position
+                        if (hasLastKnownPosition)
+                        {
+                            Debug.Log(
+                                $"[EnemyMovement] Line of sight BLOCKED. Moving to last known position: {lastKnownPosition}",
+                                this
+                            );
+                            Agent.SetDestination(lastKnownPosition);
+                        }
+                        else
+                        {
+                            Debug.Log("[EnemyMovement] Line of sight BLOCKED and no last known position.", this);
+                            Agent.ResetPath();
+                        }
+                    }
                 }
             }
             else
@@ -77,5 +128,61 @@ public class EnemyMovement : MonoBehaviour
         }
 
         Debug.Log("[EnemyMovement] FollowTarget coroutine stopped (component disabled).", this);
+    }
+
+    /// <summary>
+    /// Checks if there's a clear line of sight between the enemy and the target.
+    /// Returns true if the target is visible, false if blocked by obstacles.
+    /// </summary>
+    private bool CheckLineOfSight()
+    {
+        if (Target == null) return false;
+
+        Vector3 directionToTarget = Target.position - eyePosition.position;
+        float distanceToTarget = directionToTarget.magnitude;
+
+        // Check if target is within sight range
+        if (distanceToTarget > sightRange)
+        {
+            Debug.Log("[EnemyMovement] Target is out of sight range.", this);
+            return false;
+        }
+
+        // Raycast to check for obstacles
+        RaycastHit hit;
+        if (Physics.Raycast(eyePosition.position, directionToTarget.normalized, out hit, distanceToTarget, obstacleMask))
+        {
+            // Something is blocking the view
+            Debug.Log($"[EnemyMovement] Line of sight blocked by: {hit.collider.gameObject.name}", this);
+            return false;
+        }
+
+        // Clear line of sight
+        return true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Visualize sight range
+        if (eyePosition != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(eyePosition.position, sightRange);
+        }
+
+        // Visualize line of sight to target
+        if (Target != null && eyePosition != null)
+        {
+            bool canSee = CheckLineOfSight();
+            Gizmos.color = canSee ? Color.green : Color.red;
+            Gizmos.DrawLine(eyePosition.position, Target.position);
+        }
+
+        // Visualize last known position
+        if (hasLastKnownPosition)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(lastKnownPosition, 0.5f);
+        }
     }
 }
