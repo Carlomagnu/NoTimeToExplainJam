@@ -14,6 +14,8 @@ public class ElevatorController : MonoBehaviour
     [Header("Music")]
     [SerializeField] AudioSource speaker;
     [SerializeField] AudioClip elevatorMusic;
+    [SerializeField] AudioClip gateOpen;
+    [SerializeField] AudioSource playerBackground;
 
     //Getting in
     [SerializeField] GameObject restrict;
@@ -110,8 +112,10 @@ public class ElevatorController : MonoBehaviour
     {
         Debug.Log("Elevator reached upper level");
         openingBars = true;
-        // Open rails / doors
-        // Trigger next scene / hallway
+        isAscending = false;
+        speaker.Stop();
+        speaker.PlayOneShot(gateOpen);
+        playerBackground.Stop();
     }
 
     void OpenBars()
