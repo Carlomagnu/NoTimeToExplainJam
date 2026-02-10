@@ -22,6 +22,7 @@ public class ProgressionGate : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip requirementMetSound;
     [SerializeField] private AudioClip requirementFailedSound;
+    [SerializeField] private AudioClip successSound; // New success sound
     [SerializeField] private float soundDelay = 1f;
 
     [Header("Lock State")]
@@ -139,6 +140,9 @@ public class ProgressionGate : MonoBehaviour, IInteractable
         // Final result
         if (allRequirementsMet)
         {
+            // Play success sound after all checks pass
+            PlaySound(successSound);
+            
             Debug.Log($"{lockName}: Correct compound! Lock disengaged...");
             RemoveItemFromPlayer(heldItem);
             UnlockGate();
