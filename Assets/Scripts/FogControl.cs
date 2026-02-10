@@ -11,6 +11,9 @@ public class FogControl : MonoBehaviour
 
     [Header("Fog Settings")]
     [SerializeField] private float targetFogDensity = 0.04f;
+    [SerializeField] private float enemyMoveFogDensity = 0.04f;
+
+    public bool isFogActive => RenderSettings.fogDensity > enemyMoveFogDensity;
 
     private Coroutine fogRoutine;
 
