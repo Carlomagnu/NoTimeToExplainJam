@@ -4,23 +4,27 @@ using UnityEngine;
 
 using UnityEngine;
 
+
 public class ChargeableCube : MonoBehaviour, IInteractable
 {
     public float chargeDuration = 7f;
-    private float _chargeTimer;
+    public ElectrifiedVFX vfx;
 
-    public bool IsCharged => _chargeTimer > 0f;
+    float _timer;
+    bool _wasCharged;
+
+    public bool IsCharged => _timer > 0f;
 
     void Update()
     {
-        if (_chargeTimer > 0f)
-            _chargeTimer -= Time.deltaTime;
-    }
+        if (_timer > 0f)
+            _timer -= Time.deltaTime;
 
-    public void Interact(PlayerInteract player)
-    {
-        Debug.Log(this.name + " just got picked up by: " + player.name);
-        player.PickUp(gameObject);
+        bool charged = IsCharged;
+        if (vfx != null && charged != _wasCharged)
+            vfx.SetElectrified(charged);
+
+        _wasCharged = charged;
     }
 
     void OnTriggerStay(Collider other)
@@ -28,15 +32,22 @@ public class ChargeableCube : MonoBehaviour, IInteractable
         var water = other.GetComponentInParent<WaterVolume>();
         if (water != null && water.waterOn && water.electrified)
         {
-            _chargeTimer = chargeDuration;
+            _timer = chargeDuration;
         }
     }
 
     public bool ConsumeCharge()
     {
         if (!IsCharged) return false;
-        _chargeTimer = 0f;
+        _timer = 0f;
         return true;
     }
+    public void Interact(PlayerInteract player)
+    {
+        Debug.Log(this.name + " just got picked up by: " + player.name);
+        player.PickUp(gameObject);
+    }
+
+    
 }
 

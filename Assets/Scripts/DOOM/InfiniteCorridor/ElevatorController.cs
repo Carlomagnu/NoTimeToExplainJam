@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ElevatorController : MonoBehaviour
 {
@@ -29,9 +30,6 @@ public class ElevatorController : MonoBehaviour
 
     public bool isDescending;
     private bool isAscending;
-
-    //PlayerAudio
-    [SerializeField] BossMusic musicManager;
 
     void Update()
     {
@@ -118,7 +116,6 @@ public class ElevatorController : MonoBehaviour
         speaker.Stop();
         speaker.PlayOneShot(gateOpen);
         playerBackground.Stop();
-        playMusic();
     }
 
     void OpenBars()
@@ -134,10 +131,5 @@ public class ElevatorController : MonoBehaviour
             openingBars = false;
             Debug.Log("Bars opened");
         }
-    }
-
-    private void playMusic()
-    {
-        musicManager.PlayDoomMusic();
     }
 }

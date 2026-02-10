@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MirrorRotator : MonoBehaviour, IInteractable
 {
-    public float rotateDegrees = 15f;
+    public float rotateDegrees = -15f;
 
     public void Interact(PlayerInteract interactor)
     {

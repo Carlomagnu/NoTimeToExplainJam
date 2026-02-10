@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneratorA : MonoBehaviour
 {
-    public float activeSeconds = 6f;
+    public float activeSeconds = 1000f;
     private float _timer;
 
     public bool IsActive => _timer > 0f;

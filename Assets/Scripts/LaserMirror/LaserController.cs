@@ -6,8 +6,16 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class LaserController : MonoBehaviour
-{
+{   
+    [Header("Impact FX")]
+    public ParticleSystem impactPrefab;
+
+    private ParticleSystem _impactInstance;
+    private bool _impactThisFrame;
     [Header("References")]
     public LineRenderer lineRenderer;
 
@@ -22,6 +30,7 @@ public class LaserController : MonoBehaviour
 
     void Update()
     {
+        _impactThisFrame = false;
         if (lineRenderer == null) return;
 
         _receiversThisFrame.Clear();
@@ -36,6 +45,7 @@ public class LaserController : MonoBehaviour
             if (Physics.Raycast(origin, dir, out RaycastHit hit, maxDistance, laserMask))
             {
                 points.Add(hit.point);
+
 
                 // ---- G6 CORE: detect receivers on the hit object ----
                 ILaserReceiver receiver = hit.collider.GetComponentInParent<ILaserReceiver>();
@@ -52,6 +62,8 @@ public class LaserController : MonoBehaviour
                     origin = hit.point + dir * 0.02f; // nudge avoids self-hit flicker
                     continue;
                 }
+                SpawnOrMoveImpact(hit.point, hit.normal);
+                _impactThisFrame = true;
 
                 // Stop on non-mirror object
                 break;
@@ -90,5 +102,18 @@ public class LaserController : MonoBehaviour
         foreach (var r in _receiversThisFrame)
             _receiversLastFrame.Add(r);
     }
+    private void SpawnOrMoveImpact(Vector3 position, Vector3 normal)
+{
+    if (impactPrefab == null) return;
+
+    if (_impactInstance == null)
+        _impactInstance = Instantiate(impactPrefab);
+
+    _impactInstance.transform.position = position;
+    _impactInstance.transform.rotation = Quaternion.LookRotation(normal);
+
+    if (!_impactInstance.isPlaying)
+        _impactInstance.Play();
+}
 }
 
