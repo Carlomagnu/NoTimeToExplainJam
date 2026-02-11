@@ -9,6 +9,11 @@ public class BossHealthUI : MonoBehaviour
     [SerializeField] private GameObject negativeBottomLine;
     [SerializeField] private RectTransform negativeBarsContainer;
     [SerializeField] private GameObject negativeBarPrefab;
+    [SerializeField] private float barHeight = 10f;
+    [SerializeField] private float barSpacing = 3f;
+
+    private int barCount = 0;
+
 
     private float screenWidth;
     private float remainingDistance = 0f;
@@ -21,7 +26,7 @@ public class BossHealthUI : MonoBehaviour
     void Start()
     {
         negativeBottomLine.SetActive(false);
-        screenWidth = Screen.width;
+        screenWidth = Screen.width * 2;
         CreateNewBar();
 
     }
@@ -70,15 +75,16 @@ public class BossHealthUI : MonoBehaviour
         GameObject obj = Instantiate(negativeBarPrefab, negativeBarsContainer);
         currentBar = obj.GetComponent<RectTransform>();
 
-        // Start empty (width = 0)
-        currentBar.sizeDelta = new Vector2(0, currentBar.sizeDelta.y);
+        // Start empty
+        currentBar.sizeDelta = new Vector2(0, barHeight);
 
-        // Ensure pivot is correct (right side)
-        currentBar.pivot = new Vector2(1f, 0.5f);
-        currentBar.anchorMin = new Vector2(1f, 0.5f);
-        currentBar.anchorMax = new Vector2(1f, 0.5f);
-        currentBar.anchoredPosition = Vector2.zero;
+        // Position this bar manually
+        float yOffset = barCount * (barHeight + barSpacing);
+        currentBar.anchoredPosition = new Vector2(0, yOffset);
+
+        barCount++;
     }
+
 
     private void FillCurrentBarCompletely()
     {
