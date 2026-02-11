@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Boss : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Boss : MonoBehaviour
     private bool phase1Played = false;
     private bool phase2Played = false;
     private bool phase3Played = false;
+    private float negativeAmount;
 
     [Header("Phases and music")]
     [SerializeField] BossMusic speaker;
@@ -17,23 +19,34 @@ public class Boss : MonoBehaviour
     [SerializeField] BossHealthUI bossUI;
     [SerializeField] string bossName = "DAMNED DEREK";
 
+    //Final
+    [SerializeField] GameObject finalUI;
+    [SerializeField] SceneTransition transition;
+
     void Start()
     {
         currentHealth = maxHealth;
         bossUI.SetBossName(bossName);
         bossUI.UpdateHealth(currentHealth, maxHealth);
+        negativeAmount = 20f;
+        finalUI.SetActive(false);
     }
 
 
     public void TakeDamage(int amount)
     {
+        if (currentHealth > 0)
+        {
+            amount /= 2;
+        }
         currentHealth -= amount;
         // UI
         bossUI.UpdateHealth(currentHealth, maxHealth);
         //Negative damadge
         if (currentHealth < 0)
         {
-            float px = Mathf.Abs(amount) * 5f;
+            negativeAmount *= 1.1f;
+            float px = Mathf.Abs(negativeAmount) * 5f;
             bossUI.AddNegativeDamage(px);
         }
 
@@ -44,18 +57,39 @@ public class Boss : MonoBehaviour
             phase1Played = true;
         }
 
-        if (currentHealth <= 50 && !phase2Played)
+        if (currentHealth <= 0 && !phase2Played)
         {
             anim.SetTrigger("Trigger2");
             phase2Played = true;
-            speaker.StopDoomAndDoEthereal();
+            speaker.PlayImpactAndSilence();
         }
 
-        if (currentHealth <= 0 && !phase3Played)
+        if (currentHealth <= 0 && currentHealth > -100)
         {
-            anim.SetTrigger("Trigger3");
+            speaker.PlayImpactAndSilence();
+        }
+
+        if (currentHealth <= -100 && !phase3Played)
+        {
+            speaker.PlaySpeech();
+            speaker.FadeInEthereal();
             phase3Played = true;
         }
 
+        if (currentHealth <= -400)
+        {
+            speaker.PlayImpact();
+            speaker.FadeOutAllSound();
+            finalUI.SetActive(true);
+            StartCoroutine(finalTransition());
+
+        }
+
+    }
+
+    IEnumerator finalTransition()
+    {
+        yield return new WaitForSeconds(1f);
+        transition.changeScene("TheaterENDING");
     }
 }

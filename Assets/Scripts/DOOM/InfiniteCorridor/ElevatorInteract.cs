@@ -15,6 +15,7 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
         if (elevator.isDescending) return;
 
         EnterLift(player);
+        StartCoroutine(PlayerSafety());
     }
 
     public void Start()
@@ -57,5 +58,15 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
     {
         yield return 5f;
         elevator.StartMoveUp();
+    }
+
+    IEnumerator PlayerSafety()
+    {
+        Transform playerT = player.transform;
+        yield return new WaitForSeconds(0.5f);
+        playerT.position = playerSnapPoint.position;
+
+        Debug.Log("Player entered lift");
+        StartCoroutine(StartLiftNextFrame());
     }
 }

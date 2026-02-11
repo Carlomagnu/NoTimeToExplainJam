@@ -129,6 +129,7 @@ public class SceneTransition : MonoBehaviour
 
         foreach(GameObject gameObject in gameObjects)
         {
+            if (gameObject == null) { continue; }
             Renderer renderer = gameObject.GetComponent<Renderer>();
             if(renderer != null)
             {

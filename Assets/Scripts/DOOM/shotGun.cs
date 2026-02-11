@@ -124,7 +124,7 @@ public class shotGun : MonoBehaviour, IInteractable
         }
 
         // Camera shake and immpact
-        speaker.PlayOneShot(shoot, 0.8f);
+        speaker.PlayOneShot(shoot, 0.2f);
         CameraShake.Instance?.Shake(shakeDuration, shakeMagnitude);
         ApplyRecoil();
     }
