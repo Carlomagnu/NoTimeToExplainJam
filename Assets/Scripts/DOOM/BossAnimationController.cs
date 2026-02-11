@@ -30,9 +30,11 @@ public class Boss : MonoBehaviour
         currentHealth -= amount;
         // UI
         bossUI.UpdateHealth(currentHealth, maxHealth);
+        //Negative damadge
         if (currentHealth < 0)
         {
-            bossUI.UpdateNegativeHealth(currentHealth);
+            float px = Mathf.Abs(amount) * 5f;
+            bossUI.AddNegativeDamage(px);
         }
 
         // Music shi
