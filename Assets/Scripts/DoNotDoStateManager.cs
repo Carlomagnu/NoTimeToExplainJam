@@ -31,6 +31,8 @@ public class DoNotDoStateManager : MonoBehaviour
     AudioSource buttonClick;
     [SerializeField]
     AudioSource explosion;
+    [SerializeField]
+    SceneTransition sceneTransition;
 
     private State state = State.Duck;
 
@@ -64,6 +66,9 @@ public class DoNotDoStateManager : MonoBehaviour
 
         CameraShake cameraShake = GameObject.FindFirstObjectByType<CameraShake>();
         cameraShake.Shake(1f, 1f);
+
+        yield return new WaitForSeconds(7f);
+        sceneTransition.changeScene("Rythm Game Test");
 
         yield return null;
     }

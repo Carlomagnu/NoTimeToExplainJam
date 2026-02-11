@@ -20,7 +20,7 @@ public class TransitionOnSongEnd : MonoBehaviour
         {
             yield return null;
         }
-        sceneTransition.changeScene("SceneTransitionEnd");
+        sceneTransition.changeScene("BREAKOUT");
         yield return null;
     }
 }
