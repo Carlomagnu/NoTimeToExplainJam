@@ -1643,6 +1643,11 @@ Transform:
   - {fileID: 1421401488}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &770218875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1720293757003685537, guid: 9f9e8c8afa033472aa3b93946a4e38c0, type: 3}
+  m_PrefabInstance: {fileID: 1617589166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771699889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,12 +2512,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7678369012020647997, guid: 9f9e8c8afa033472aa3b93946a4e38c0, type: 3}
   m_PrefabInstance: {fileID: 1617589166}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 770218875}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1b6aeacbce114ebaa14d3da137ccf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1052835712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770218875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c99797ea7ed40a496b24e7e76d01cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showCrosshair: 1
+  crosshairColor: {r: 1, g: 1, b: 1, a: 1}
+  crosshairSize: 20
+  crosshairType: 0
 --- !u!1 &1075090425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,7 +4053,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1720293757003685537, guid: 9f9e8c8afa033472aa3b93946a4e38c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1052835712}
   m_SourcePrefab: {fileID: 100100000, guid: 9f9e8c8afa033472aa3b93946a4e38c0, type: 3}
 --- !u!1001 &1696440031
 PrefabInstance:
