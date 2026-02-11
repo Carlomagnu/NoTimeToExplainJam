@@ -130,6 +130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 244762149622569275, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: isStackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244762149622569275, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: stackableLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1834686308219820150, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_Name
       value: LabItem (1)
@@ -628,6 +636,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 244762149622569275, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: isStackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244762149622569275, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
+      propertyPath: stackableLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1834686308219820150, guid: 44f585c1453e8456fa5e0be4291f8980, type: 3}
       propertyPath: m_Name
       value: LabItem
