@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm Game Test.unity
     guid: 021132b5cad5a00fd919b6b2b27fcf37
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: bf616c7821adb4e28a6dd77905da6f12
   m_configObjects: {}

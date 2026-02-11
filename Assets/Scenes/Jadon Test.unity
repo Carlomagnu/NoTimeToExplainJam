@@ -1360,7 +1360,7 @@ MonoBehaviour:
   useSceneTransition: 1
   transitionDelay: 4
   sceneTransition: {fileID: 987812863}
-  nextSceneName: IVANLEVEL
+  nextSceneName: Level Base
 --- !u!82 &637925247 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4636816990089189407, guid: 3eaef0567b5ff47fb98914dc20f32059, type: 3}
