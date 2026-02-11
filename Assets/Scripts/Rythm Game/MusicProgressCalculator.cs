@@ -6,7 +6,7 @@ public class MusicProgressCalculator : MonoBehaviour
 {
     [SerializeField]
     AudioSource song;
-    const float LENGTH_OF_BEAT = 60f/179f;
+    const float LENGTH_OF_BEAT = 60f/135f;
     const float HZ_OF_SONG = 44100f;
     const float timeSamplesPerBeat = HZ_OF_SONG * LENGTH_OF_BEAT;
 
