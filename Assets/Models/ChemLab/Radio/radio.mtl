@@ -1,0 +1,124 @@
+# Blender 5.0.0 MTL File: 'radio.blend'
+# www.blender.org
+
+newmtl Dial_Mat
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/lawre/OneDrive/Desktop/Nawras Folder/TUNER.jpg
+
+newmtl Handle_Mat
+Ns 0.000000
+Ka 0.495455 0.495455 0.495455
+Kd 0.011356 0.011356 0.011356
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 2.100000
+d 1.000000
+illum 3
+
+newmtl Main_Mat
+Ka 1.000000 1.000000 1.000000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.100000
+d 1.000000
+illum 2
+map_Kd Ambient Occlusion.001.png
+map_Ns C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/Wood029_2K-JPG/Wood029_2K-JPG_Roughness.jpg
+
+newmtl Material.001
+Ns 1000.000000
+Ka 0.436364 0.436364 0.436364
+Kd 0.800032 0.777305 0.250222
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+
+newmtl Material.002
+Ns 1000.000000
+Ka 0.513636 0.513636 0.513636
+Kd 0.378013 0.382675 0.136526
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl Material.004
+Ns 1000.000000
+Ka 0.513636 0.513636 0.513636
+Kd 0.378013 0.382675 0.136526
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl Material.005
+Ns 145.785126
+Ka 0.436364 0.436364 0.436364
+Kd 0.060198 0.060198 0.060198
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl Material.006
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
+map_Ns C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
+map_refl C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
+
+newmtl Screw_mat
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.131687 0.131687 0.131687
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+
+newmtl dial_glass_mat
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.109689
+illum 6
+
+newmtl knob_mat
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.106551 0.106551 0.106551
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl radio_mesh_mat
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
+map_Ns C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
+map_refl C:/Users/lawre/OneDrive/Desktop/Nawras Folder/textures/oldmetal13.jpg
