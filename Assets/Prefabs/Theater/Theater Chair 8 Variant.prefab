@@ -1,0 +1,592 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1327537434954222372
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &1162545428927534801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 1327537434954222372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1688952016433723050
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &1530713983851834207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 1688952016433723050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3826869170176210515
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &3987279511518391206 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 3826869170176210515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4086374108194991391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &4250231684778225898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 4086374108194991391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4110062753357485200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &4271537696833259877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 4110062753357485200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4628947999334679234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &4788240120238661431 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 4628947999334679234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4723899470241044828
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046499385651762324, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair 8 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2572635698569869653, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 1001612146718490717, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 5542270135985588341, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 8728708970500987540, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 7944803158286633911, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 2374718743766765712, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 675992333454836347, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    - {fileID: 6535291852852887307, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530713983851834207}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4788240120238661431}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3987279511518391206}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4250231684778225898}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4271537696833259877}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5025388884530200634}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7362656394182691565}
+    - targetCorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1162545428927534801}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+--- !u!4 &7478720131646499087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2758289706558271571, guid: 7960b141a85dbf0fe8557493dbc0c61b, type: 3}
+  m_PrefabInstance: {fileID: 4723899470241044828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5184672569849978319
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &5025388884530200634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 5184672569849978319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7233630169347692312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7478720131646499087}
+    m_Modifications:
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748592084463242589, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+      propertyPath: m_Name
+      value: Theater Chair Variant (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+--- !u!4 &7362656394182691565 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 166189718122274293, guid: 50e87e3dea01044518a81a028a036735, type: 3}
+  m_PrefabInstance: {fileID: 7233630169347692312}
+  m_PrefabAsset: {fileID: 0}
