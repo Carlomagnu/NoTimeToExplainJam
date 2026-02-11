@@ -23,6 +23,8 @@ public class GenGateDoor : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource doorAudio;
     [SerializeField] private AudioClip doorSfx;
 
+    [SerializeField] private SceneTransition transition;
+
     private Vector3 _leftClosed;
     private Vector3 _rightClosed;
     private Vector3 _leftOpen;
@@ -50,6 +52,7 @@ public class GenGateDoor : MonoBehaviour, IInteractable
         }
 
         StartCoroutine(seq_open_close());
+        transition.changeScene("Ferami Test");
     }
 
     private bool gens_ok(out string reason)
