@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: bf616c7821adb4e28a6dd77905da6f12
+  - enabled: 1
     path: Assets/Scenes/SceneTransitionEnd.unity
     guid: c8909a93586419334abeae2814a198cc
+  - enabled: 1
+    path: Assets/Scenes/Level Base.unity
+    guid: eb5b6c4b3c0199174be33bcae3d01ec0
   - enabled: 1
     path: Assets/Scenes/Ferami Test.unity
     guid: 42ae91dfe1c27c340b85b9c3ba08b938
@@ -35,10 +41,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rythm Game Test.unity
     guid: 021132b5cad5a00fd919b6b2b27fcf37
+<<<<<<< Updated upstream
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: bf616c7821adb4e28a6dd77905da6f12
   - enabled: 1
     path: Assets/Scenes/Level Base.unity
     guid: eb5b6c4b3c0199174be33bcae3d01ec0
+=======
+>>>>>>> Stashed changes
   m_configObjects: {}
