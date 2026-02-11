@@ -13,17 +13,29 @@ public class Boss : MonoBehaviour
     [Header("Phases and music")]
     [SerializeField] BossMusic speaker;
 
+    [Header("HealthUI")]
+    [SerializeField] BossHealthUI bossUI;
+    [SerializeField] string bossName = "DAMNED DEREK";
+
     void Start()
     {
         currentHealth = maxHealth;
-        //LATER GET RID OF THIS
-        //speaker.PlayDoomMusic();
+        bossUI.SetBossName(bossName);
+        bossUI.UpdateHealth(currentHealth, maxHealth);
     }
+
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        // UI
+        bossUI.UpdateHealth(currentHealth, maxHealth);
+        if (currentHealth < 0)
+        {
+            bossUI.UpdateNegativeHealth(currentHealth);
+        }
 
+        // Music shi
         if (currentHealth <= 99 && !phase1Played)
         {
             anim.SetTrigger("Trigger1");
@@ -42,5 +54,6 @@ public class Boss : MonoBehaviour
             anim.SetTrigger("Trigger3");
             phase3Played = true;
         }
+
     }
 }

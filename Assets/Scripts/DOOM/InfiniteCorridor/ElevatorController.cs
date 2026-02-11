@@ -129,6 +129,7 @@ public class ElevatorController : MonoBehaviour
         PlayDoom();
         arenaCollider.enabled = true;
         Dome.enabled = true;
+        BossHealthUIController.Instance.ShowUI();
     }
 
     void OpenBars()
