@@ -24,6 +24,8 @@ public class TheaterStateMachine : MonoBehaviour
     AudioClip lightActivateSound;
     [SerializeField]
     GameObject applauseLight;
+    [SerializeField]
+    SceneTransition sceneTransition;
 
     public enum Joke
     {
@@ -87,6 +89,8 @@ public class TheaterStateMachine : MonoBehaviour
             yield return new WaitForSeconds(5f);
             audienceAudio.PlayOneShot(lightActivateSound);
             applauseLight.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            sceneTransition.changeScene("Jadon Test");
         }
         yield return null;
     }
