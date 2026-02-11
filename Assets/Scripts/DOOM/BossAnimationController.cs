@@ -9,11 +9,15 @@ public class Boss : MonoBehaviour
     private bool phase1Played = false;
     private bool phase2Played = false;
     private bool phase3Played = false;
-    private bool phase4Played = false;
+
+    [Header("Phases and music")]
+    [SerializeField] BossMusic speaker;
 
     void Start()
     {
         currentHealth = maxHealth;
+        //LATER GET RID OF THIS
+        //speaker.PlayDoomMusic();
     }
 
     public void TakeDamage(int amount)
@@ -30,12 +34,13 @@ public class Boss : MonoBehaviour
         {
             anim.SetTrigger("Trigger2");
             phase2Played = true;
+            speaker.StopDoomAndDoEthereal();
         }
 
-        if (currentHealth <= 0 && !phase4Played)
+        if (currentHealth <= 0 && !phase3Played)
         {
             anim.SetTrigger("Trigger3");
-            phase4Played = true;
+            phase3Played = true;
         }
     }
 }

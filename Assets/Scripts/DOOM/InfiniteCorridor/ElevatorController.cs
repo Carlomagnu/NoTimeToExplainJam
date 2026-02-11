@@ -27,6 +27,9 @@ public class ElevatorController : MonoBehaviour
     private Vector3 barsClosedPos;
     private Vector3 barsOpenPos;
     private bool openingBars = false;
+    [SerializeField] BossMusic bossMusic;
+    [SerializeField] MeshCollider arenaCollider;
+    [SerializeField] SphereCollider Dome;
 
     public bool isDescending;
     private bool isAscending;
@@ -53,6 +56,13 @@ public class ElevatorController : MonoBehaviour
         // Store bar positions
         barsClosedPos = liftBars.localPosition;
         barsOpenPos = barsClosedPos + Vector3.up * barsOpenHeight;
+        
+    }
+
+    private void Start()
+    {
+        arenaCollider.enabled = false;
+        Dome.enabled = false;
     }
 
     public void CallElevator()
@@ -68,7 +78,7 @@ public class ElevatorController : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position,
             bottomPoint.position,
-            moveSpeed * Time.deltaTime
+            2f * Time.deltaTime
         );
 
         if (Vector3.Distance(transform.position,
@@ -116,6 +126,9 @@ public class ElevatorController : MonoBehaviour
         speaker.Stop();
         speaker.PlayOneShot(gateOpen);
         playerBackground.Stop();
+        PlayDoom();
+        arenaCollider.enabled = true;
+        Dome.enabled = true;
     }
 
     void OpenBars()
@@ -131,5 +144,10 @@ public class ElevatorController : MonoBehaviour
             openingBars = false;
             Debug.Log("Bars opened");
         }
+    }
+
+    private void PlayDoom()
+    {
+        bossMusic.PlayDoomMusic();
     }
 }

@@ -7,6 +7,7 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] Transform playerSnapPoint;
     [SerializeField] ElevatorController elevator;
+    GameObject player;
 
 
     public void Interact(PlayerInteract player)
@@ -14,6 +15,31 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
         if (elevator.isDescending) return;
 
         EnterLift(player);
+    }
+
+    public void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.K))
+        {
+            EnterLiftJK(player);
+        }
+    }
+
+
+    void EnterLiftJK(GameObject player)
+    {
+        Transform playerT = player.transform;
+
+        // Snap position
+        playerT.position = playerSnapPoint.position;
+
+        Debug.Log("Player entered lift");
+        StartCoroutine(StartLiftNextFrame());
     }
 
     void EnterLift(PlayerInteract player)
@@ -29,7 +55,7 @@ public class ElevatorInteract : MonoBehaviour, IInteractable
 
     IEnumerator StartLiftNextFrame()
     {
-        yield return 1f;
+        yield return 5f;
         elevator.StartMoveUp();
     }
 }

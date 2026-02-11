@@ -115,8 +115,9 @@ public class shotGun : MonoBehaviour, IInteractable
                     spawnBlood(hit);
                     HandlePosterHit(hit);
                     hasBled = true;
+                    HitBoss(hit);
                 }
- 
+
 
                 DrawDebugCircle(hit.point, hit.normal);
             }
@@ -229,7 +230,7 @@ public class shotGun : MonoBehaviour, IInteractable
         Ibleedable bleedable =
         hit.collider.GetComponentInParent<Ibleedable>();
 
-        
+
         if (bleedable != null)
         {
             bleedable.bleed(hit);
@@ -246,6 +247,15 @@ public class shotGun : MonoBehaviour, IInteractable
         if (poster != null)
         {
             poster.OnShot(hit);
+        }
+    }
+
+    void HitBoss(RaycastHit hit)
+    {
+        Boss boss = hit.collider.GetComponentInParent<Boss>();
+        if (boss != null)
+        {
+            boss.TakeDamage(20);
         }
     }
 }
