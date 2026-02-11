@@ -428,6 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ea7ee8f9222e74a987aab77393a0fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loopSource: {fileID: 0}
+  electricLoop: {fileID: 8300000, guid: e94cdad277940b74988fe6e9064b9a0b, type: 3}
   generatorA: {fileID: 958569969}
   lockedOn: 0
   vfx: {fileID: 346175568}
@@ -834,6 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e78456f964e764f91e1cbd8be358bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loopSource: {fileID: 0}
+  electricLoop: {fileID: 8300000, guid: e94cdad277940b74988fe6e9064b9a0b, type: 3}
   chargeDuration: 7
   vfx: {fileID: 642550592}
 --- !u!54 &642550595
@@ -1115,6 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b81f3188e5d38e42bca916a652d9694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfx: {fileID: 825446497}
+  interactSound: {fileID: 8300000, guid: 84b1009abacc1764999de002efc7cead, type: 3}
   water: {fileID: 1946520223}
 --- !u!136 &825446495
 CapsuleCollider:
@@ -1139,6 +1145,102 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &825446497
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825446493}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &849159101 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1018664272722485354, guid: b9f77a4c421484e46b84a4b56ba50e8b, type: 3}
@@ -1156,6 +1258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b81f3188e5d38e42bca916a652d9694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfx: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 84b1009abacc1764999de002efc7cead, type: 3}
   water: {fileID: 1946520223}
 --- !u!65 &849159106
 BoxCollider:
@@ -1485,6 +1589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c87c1958a31c64aa359a17fec8a3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loopSource: {fileID: 0}
+  electricLoop: {fileID: 8300000, guid: 6ecd4ff5c5126114197521b335f4aa6a, type: 3}
   activeSeconds: 10000
 --- !u!65 &958569970
 BoxCollider:
@@ -1540,6 +1646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a6903869d0b5c46950a7f4ab22ed90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loopSource: {fileID: 0}
+  electricLoop: {fileID: 8300000, guid: e94cdad277940b74988fe6e9064b9a0b, type: 3}
   water: {fileID: 1946520223}
   holdSeconds: 0.2
   vfx: {fileID: 1025051896}
@@ -2493,8 +2601,13 @@ MonoBehaviour:
   autoCloseDelay: 2
   generatorA: {fileID: 958569969}
   generatorB: {fileID: 346175563}
-  doorAudio: {fileID: 0}
-  doorSfx: {fileID: 0}
+  doorAudio: {fileID: 1547719494}
+  doorSfx: {fileID: 8300000, guid: 5273d845e9a7b4584acb69bdb2d309ea, type: 3}
+--- !u!82 &1547719494 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4636816990089189407, guid: 3eaef0567b5ff47fb98914dc20f32059, type: 3}
+  m_PrefabInstance: {fileID: 577218060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1781191453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2631,6 +2744,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9f77a4c421484e46b84a4b56ba50e8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 825446494}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9f77a4c421484e46b84a4b56ba50e8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 825446497}
     - targetCorrespondingSourceObject: {fileID: -1018664272722485354, guid: b9f77a4c421484e46b84a4b56ba50e8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 849159105}

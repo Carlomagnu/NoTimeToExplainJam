@@ -14,7 +14,6 @@ public class ValveSwitch : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteract interactor)
     {
-
         play_interact_sfx();
         if (water == null) return;
         water.SetWaterOn(!water.waterOn);
@@ -43,7 +42,7 @@ public class ValveSwitch : MonoBehaviour, IInteractable
         _sfx.dopplerLevel = 0f;
     }
 
-    _sfx.PlayOneShot(interactSound, 1f);
+    _sfx.PlayOneShot(interactSound, 0.5f);
 }
 }
 
