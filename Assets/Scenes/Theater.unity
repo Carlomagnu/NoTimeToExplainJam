@@ -6805,6 +6805,7 @@ MonoBehaviour:
   audioVisualiser: {fileID: 943894152}
   lightActivateSound: {fileID: 8300000, guid: 79e7541e59e54c39cabdec3a6de17b55, type: 3}
   applauseLight: {fileID: 1297886134}
+  sceneTransition: {fileID: 382172742}
   currentJoke: 0
   currentState: 1
 --- !u!1 &2122188601
