@@ -2488,6 +2488,7 @@ MonoBehaviour:
   bossUI: {fileID: 352093826}
   bossName: DAMNED DEREK
   finalUI: {fileID: 1102324060}
+  transition: {fileID: 382172742}
 --- !u!1 &969723757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6169080553117486950, guid: 1d4ba373a335341acaab6278e09e8e05, type: 3}
@@ -4453,7 +4454,7 @@ MonoBehaviour:
   speaker: {fileID: 2065053516}
   speaker2: {fileID: 2065053518}
   DoomMusic: {fileID: 8300000, guid: 7e13fd58bc7fa410b9be450139499fa1, type: 3}
-  EtherealMusic: {fileID: 8300000, guid: 49bad43e1c5b848b092e15f41dc69ca1, type: 3}
+  EtherealMusic: {fileID: 8300000, guid: 2502202a76f4b46a68c5e982a3f35240, type: 3}
   Impact: {fileID: 8300000, guid: f5ec2e7cf9ddf475883ebffd6428ed0c, type: 3}
   Speech: {fileID: 8300000, guid: 56ee781c23fff4fd89ea404852636f04, type: 3}
 --- !u!82 &2065053518
@@ -4933,6 +4934,7 @@ GameObject:
   - component: {fileID: 6677779318739589228}
   - component: {fileID: 6677779318739589229}
   - component: {fileID: 6677779318739589231}
+  - component: {fileID: 6677779318739589232}
   m_Layer: 31
   m_Name: Elevator
   m_TagString: Untagged
@@ -5154,7 +5156,7 @@ MonoBehaviour:
   topPoint: {fileID: 1016260994}
   bottomPoint: {fileID: 1854997754}
   absoluteTop: {fileID: 1319962311}
-  moveSpeed: 10
+  moveSpeed: 8
   speaker: {fileID: 6677779318739589225}
   elevatorMusic: {fileID: 8300000, guid: cb6ae43a7ee04476ba95c1bf5a8de85b, type: 3}
   gateOpen: {fileID: 8300000, guid: 02577455b0c484dbdb894e96cfb02599, type: 3}
@@ -5356,6 +5358,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSnapPoint: {fileID: 314183877}
   elevator: {fileID: 6677779318739589224}
+--- !u!65 &6677779318739589232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334291179590124253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4419074, y: 0.49948502, z: 2.689171}
+  m_Center: {x: 0.019001007, y: -0.7548847, z: -1.2980024}
 --- !u!23 &7746334210215385369
 MeshRenderer:
   m_ObjectHideFlags: 0

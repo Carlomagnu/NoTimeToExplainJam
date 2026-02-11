@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Boss : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Boss : MonoBehaviour
 
     //Final
     [SerializeField] GameObject finalUI;
+    [SerializeField] SceneTransition transition;
 
     void Start()
     {
@@ -74,13 +76,20 @@ public class Boss : MonoBehaviour
             phase3Played = true;
         }
 
-        if (currentHealth <= -300)
+        if (currentHealth <= -400)
         {
             speaker.PlayImpact();
             speaker.FadeOutAllSound();
             finalUI.SetActive(true);
+            StartCoroutine(finalTransition());
 
         }
 
+    }
+
+    IEnumerator finalTransition()
+    {
+        yield return new WaitForSeconds(1f);
+        transition.changeScene("TheaterENDING");
     }
 }

@@ -79,7 +79,7 @@ public class BossMusic : MonoBehaviour
         while (t < fadeTime)
         {
             t += Time.deltaTime;
-            speaker.volume = Mathf.Lerp(0f, 0.7f, t / fadeTime);
+            speaker.volume = Mathf.Lerp(0f, 0.5f, t / fadeTime);
             yield return null;
         }
     }
