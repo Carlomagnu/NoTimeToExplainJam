@@ -414,7 +414,7 @@ MonoBehaviour:
   decreaseDuration: 3
   targetFogDensity: 0.5
   enemyMoveFogDensity: 0.2
-  timeBeforeSceneChange: 60
+  timeBeforeSceneChange: 10
   nextSceneName: Scenes/Do Not Do This
 --- !u!1 &796733929
 GameObject:

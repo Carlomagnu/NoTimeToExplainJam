@@ -6,6 +6,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private SceneTransition transition;
+
     public Transform Target;
     public float UpdateSpeed = 0.1f;
 
@@ -14,10 +16,18 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float sightRange = 20f; // Maximum sight distance
     [SerializeField] private Transform eyePosition; // Where the enemy "sees" from (optional)
 
+    [Header("Catch Settings")]
+    [SerializeField] private float catchDistance = 2f; // Distance at which player is caught
+
+    [Header("Scene Transition")]
+    [SerializeField] private float timeBeforeSceneChange = 60f; // p seconds
+    [SerializeField] private string nextSceneName = "NextScene"; // Name of the scene to load
+
     private FogControl fogControl;
     private NavMeshAgent Agent;
     private Vector3 lastKnownPosition;
     private bool hasLastKnownPosition = false;
+    private bool playerCaught = false;
 
     private void Awake()
     {
@@ -77,6 +87,17 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
+                    // Check if player is caught
+                    if (!playerCaught)
+                    {
+                        float distanceToTarget = Vector3.Distance(transform.position, Target.position);
+                        if (distanceToTarget <= catchDistance)
+                        {
+                            OnPlayerCaught();
+                            yield break; // Exit the coroutine
+                        }
+                    }
+
                     // Check line of sight to target
                     bool hasLineOfSight = CheckLineOfSight();
 
@@ -131,6 +152,30 @@ public class EnemyMovement : MonoBehaviour
     }
 
     /// <summary>
+    /// Called when the player is caught by the enemy
+    /// </summary>
+    private void OnPlayerCaught()
+    {
+        playerCaught = true;
+        Debug.Log("[EnemyMovement] Player caught! Loading scene: " + nextSceneName, this);
+
+        // Stop the agent
+        Agent.ResetPath();
+
+        // Load the next scene using Transition
+        StartCoroutine(LoadSceneAfterDelay());
+    }
+
+    /// <summary>
+    /// Loads the next scene after a delay using Transition
+    /// </summary>
+    private IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(timeBeforeSceneChange);
+        transition.changeScene(nextSceneName);
+    }
+
+    /// <summary>
     /// Checks if there's a clear line of sight between the enemy and the target.
     /// Returns true if the target is visible, false if blocked by obstacles.
     /// </summary>
@@ -169,6 +214,10 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(eyePosition.position, sightRange);
         }
+
+        // Visualize catch distance
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, catchDistance);
 
         // Visualize line of sight to target
         if (Target != null && eyePosition != null)
