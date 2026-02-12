@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SceneTransitionEnd.unity
+    guid: c8909a93586419334abeae2814a198cc
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: bf616c7821adb4e28a6dd77905da6f12
   - enabled: 1
-    path: Assets/Scenes/SceneTransitionEnd.unity
-    guid: c8909a93586419334abeae2814a198cc
-  - enabled: 1
-    path: Assets/Scenes/Level Base.unity
-    guid: eb5b6c4b3c0199174be33bcae3d01ec0
+    path: Assets/Scenes/Theater.unity
+    guid: 444cbeb2da3041eaab0452eef110a56c
   - enabled: 1
     path: Assets/Scenes/Ferami Test.unity
     guid: 42ae91dfe1c27c340b85b9c3ba08b938
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Do Not Do This.unity
     guid: 3eb075c1d0f45f686b3cf73335e149c9
   - enabled: 1
@@ -26,28 +26,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/IVANLEVEL.unity
     guid: 9beb6fcc03743d540931c7e8596a465e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Carlos TEST SCENE.unity
     guid: 2e5ca910cf17e4f2296254cf9ff8c4b8
+  - enabled: 1
+    path: Assets/Scenes/Rythm Game Test.unity
+    guid: 021132b5cad5a00fd919b6b2b27fcf37
   - enabled: 1
     path: Assets/Scenes/BREAKOUT.unity
     guid: a9c57046fbdc744908819f28cb3851b7
   - enabled: 1
-    path: Assets/Scenes/Theater.unity
-    guid: 444cbeb2da3041eaab0452eef110a56c
-  - enabled: 1
     path: Assets/Scenes/TheaterENDING.unity
     guid: bb6c920f0a9644a4aa0e05fa28f5070b
   - enabled: 1
-    path: Assets/Scenes/Rythm Game Test.unity
-    guid: 021132b5cad5a00fd919b6b2b27fcf37
-<<<<<<< Updated upstream
-  - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: bf616c7821adb4e28a6dd77905da6f12
-  - enabled: 1
     path: Assets/Scenes/Level Base.unity
     guid: eb5b6c4b3c0199174be33bcae3d01ec0
-=======
->>>>>>> Stashed changes
   m_configObjects: {}

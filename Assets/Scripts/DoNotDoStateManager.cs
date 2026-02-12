@@ -52,7 +52,8 @@ public class DoNotDoStateManager : MonoBehaviour
                 buttonAnimator.SetTrigger("On");
                 break;
             case State.Button:
-                StartCoroutine(bombSequence());
+                sceneTransition.changeScene("BREAKOUT");
+                //StartCoroutine(bombSequence());
                 break;
         }
     }
@@ -68,7 +69,7 @@ public class DoNotDoStateManager : MonoBehaviour
         cameraShake.Shake(1f, 1f);
 
         yield return new WaitForSeconds(7f);
-        sceneTransition.changeScene("Rythm Game Test");
+        sceneTransition.changeScene("BREAKOUT");
 
         yield return null;
     }

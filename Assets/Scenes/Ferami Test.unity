@@ -861,7 +861,7 @@ MonoBehaviour:
   targetFogDensity: 0.5
   enemyMoveFogDensity: 0.2
   timeBeforeSceneChange: 60
-  nextSceneName: Scenes/Do Not Do This
+  nextSceneName: Rythm Game Test
   enableObjectDeletion: 1
   Enemy: {fileID: 420730495}
 --- !u!1 &796733929
